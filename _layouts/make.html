@@ -9,7 +9,7 @@ layout: default
     <h1>{{ page.title }}</h1>
   </header>
 
-  {% comment %} viewer {% endcomment %}
+  {% if page.model_file %}{% include model-viewer.html src=page.model_file poster=cover alt=page.title %}{% endif %}
 
   {% if page.images %}
   <div class="gallery">
