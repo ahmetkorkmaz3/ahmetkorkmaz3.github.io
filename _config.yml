@@ -12,6 +12,9 @@ collections:
   projects:
     output: true
     permalink: /projects/:name/
+  makes:
+    output: true
+    permalink: /3d/:name/
 defaults:
   - scope:
       path: ""
@@ -19,6 +22,12 @@ defaults:
     values:
       layout: project
       nav: projects
+  - scope:
+      path: ""
+      type: makes
+    values:
+      layout: make
+      nav: 3d
 exclude:
   - README.md
   - Gemfile

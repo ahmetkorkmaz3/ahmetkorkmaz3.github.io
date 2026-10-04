@@ -17,6 +17,24 @@
     document.querySelectorAll('main section[id]').forEach(function (s) { io.observe(s); });
   }
 
+  // 3D gallery filter. Without JavaScript the buttons stay hidden and every card shows.
+  var filters = document.querySelector('.filters');
+  if (filters) {
+    var cards = document.querySelectorAll('.cards [data-kind]');
+    filters.hidden = false;
+    filters.addEventListener('click', function (event) {
+      var button = event.target.closest('[data-filter]');
+      if (!button) return;
+      var kind = button.getAttribute('data-filter');
+      filters.querySelectorAll('[data-filter]').forEach(function (b) {
+        b.setAttribute('aria-pressed', String(b === button));
+      });
+      cards.forEach(function (card) {
+        card.hidden = kind !== 'all' && card.getAttribute('data-kind') !== kind;
+      });
+    });
+  }
+
   // Live GitHub star counts for "owner/repo" values (the static numbers in the HTML stay as a fallback)
   if (window.fetch) {
     document.querySelectorAll('[data-repo]').forEach(function (el) {

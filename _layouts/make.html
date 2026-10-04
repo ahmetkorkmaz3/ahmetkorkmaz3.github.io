@@ -1,0 +1,40 @@
+---
+layout: default
+---
+{% assign cover = page.cover | default: page.images.first %}
+<article class="detail">
+  <a class="back" href="{{ '/3d/' | relative_url }}">← All 3D work</a>
+  <header class="detail-head">
+    <p class="detail-meta"><time datetime="{{ page.date | date_to_xmlschema }}">{{ page.date | date: '%b %Y' }}</time> · {% include kind-label.html kind=page.kind %}</p>
+    <h1>{{ page.title }}</h1>
+  </header>
+
+  {% comment %} viewer {% endcomment %}
+
+  {% if page.images %}
+  <div class="gallery">
+    {% for image in page.images %}<img src="{{ image | relative_url }}" alt="{{ page.title }}, photo {{ forloop.index }}" loading="lazy">{% endfor %}
+  </div>
+  {% endif %}
+
+  {% if page.printer or page.filament or page.designer %}
+  <dl class="facts">
+    {% if page.printer %}<dt>Printer</dt>
+    <dd>{{ page.printer }}</dd>{% endif %}
+    {% if page.filament %}<dt>Filament</dt>
+    <dd>{{ page.filament }}</dd>{% endif %}
+    {% if page.designer %}<dt>Designer</dt>
+    <dd>{{ page.designer }}</dd>{% endif %}
+  </dl>
+  {% endif %}
+
+  {% if page.link %}
+  {% assign link_parts = page.link | split: '/' %}
+  {% assign link_host = link_parts[2] | remove_first: 'www.' %}
+  <p class="actions"><a class="btn" href="{{ page.link }}" target="_blank" rel="noopener">View on {{ link_host }} ↗</a></p>
+  {% endif %}
+
+  <div class="prose">
+    {{ content }}
+  </div>
+</article>

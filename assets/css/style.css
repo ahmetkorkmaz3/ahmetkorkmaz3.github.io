@@ -167,6 +167,33 @@ section:last-of-type { margin-bottom: 64px; }
 .actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 24px; }
 .detail-cover { display: block; width: 100%; height: auto; margin-bottom: 40px; border-radius: 10px; border: 1px solid var(--line); }
 
+/* ---------- 3D ---------- */
+.filters { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 24px; }
+.filters[hidden] { display: none; }
+.filters button {
+  font: inherit; font-size: 13px; font-weight: 500; padding: 6px 12px; border-radius: 999px;
+  border: 1px solid var(--line); background: none; color: var(--muted); cursor: pointer;
+}
+.filters button:hover { color: var(--text); }
+.filters button[aria-pressed="true"] { background: var(--accent-soft); border-color: transparent; color: var(--accent); }
+.cards { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px; }
+.card[hidden] { display: none; }
+.card a { display: block; }
+.card img, .card-empty {
+  display: block; width: 100%; aspect-ratio: 4 / 3; object-fit: cover;
+  border-radius: 10px; border: 1px solid var(--line); background: var(--surface);
+}
+.card h2 { margin-top: 12px; font-size: 16px; font-weight: 500; color: var(--text); line-height: 1.4; }
+.card a:hover h2 { color: var(--accent); }
+.card-meta { margin-top: 4px; font-size: 13px; color: var(--muted); }
+.tag { font-size: 11px; font-weight: 600; letter-spacing: .06em; text-transform: uppercase; }
+.tag-model { color: var(--accent); }
+.gallery { display: flex; flex-direction: column; gap: 16px; margin-bottom: 40px; }
+.gallery img { display: block; width: 100%; height: auto; border-radius: 10px; border: 1px solid var(--line); }
+.facts { display: grid; grid-template-columns: max-content 1fr; gap: 8px 24px; margin-bottom: 32px; font-size: 15px; }
+.facts dt { color: var(--muted); }
+.facts dd { margin: 0; color: var(--text); }
+
 /* ---------- Responsive ---------- */
 @media (max-width: 1023px) {
   .layout { display: block; padding: 0 24px; max-width: 720px; }
@@ -186,6 +213,7 @@ section:last-of-type { margin-bottom: 64px; }
   .name { font-size: 36px; }
 }
 @media (max-width: 600px) {
+  .cards { grid-template-columns: 1fr; }
   .layout { padding: 0 16px; }
   .section-title { margin: 0 -16px 12px; padding: 14px 16px; }
   .entry { grid-template-columns: 1fr; gap: 6px; padding: 16px; margin: 0 -16px; }
