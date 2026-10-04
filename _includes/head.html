@@ -1,0 +1,24 @@
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+{% if page.full_title %}{% assign page_title = page.title %}{% else %}{% assign page_title = page.title | append: ' · ' | append: site.title %}{% endif %}
+{% assign page_description = page.description | default: page.summary | default: site.description %}
+{% assign page_image = page.cover | default: page.images.first | default: site.og_image | absolute_url %}
+<title>{{ page_title }}</title>
+<meta name="description" content="{{ page_description | strip_html | strip_newlines | escape }}">
+<meta name="author" content="Murat Ahmet Korkmaz">
+<link rel="canonical" href="{{ page.url | absolute_url }}">
+
+<meta property="og:type" content="{{ page.og_type | default: 'article' }}">
+<meta property="og:title" content="{{ page_title }}">
+<meta property="og:description" content="{{ page.og_description | default: page_description | strip_html | strip_newlines | escape }}">
+<meta property="og:url" content="{{ page.url | absolute_url }}">
+<meta property="og:image" content="{{ page_image }}">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:site" content="@ahmetmkorkmaz">
+
+<link rel="icon" href="{{ '/img/favicon.ico' | relative_url }}">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}">
+{% if page.url == '/' %}{% include person-jsonld.html %}{% endif %}

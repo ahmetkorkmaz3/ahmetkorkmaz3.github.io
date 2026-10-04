@@ -1,0 +1,17 @@
+title: Ahmet Korkmaz
+description: Ahmet Korkmaz is a senior full stack developer at Moneo.
+url: https://ahmetkorkmaz3.github.io
+baseurl: ""
+og_image: https://avatars.githubusercontent.com/u/29120746?v=4
+timezone: Europe/Istanbul
+markdown: kramdown
+liquid:
+  error_mode: strict
+  strict_filters: true
+exclude:
+  - README.md
+  - Gemfile
+  - Gemfile.lock
+  - docs
+  - scripts
+  - vendor
