@@ -14,6 +14,7 @@
         <li><a href="{{ home }}#about">About</a></li>
         <li><a href="{{ home }}#experience">Experience</a></li>
         <li><a{% if page.nav == 'projects' %} class="active"{% endif %} href="{{ home }}#projects">Projects</a></li>
+        <li><a{% if page.nav == 'uses' %} class="active"{% endif %} href="{{ '/uses/' | relative_url }}">Uses</a></li>
       </ul>
     </nav>
   </div>
