@@ -1,17 +1,51 @@
 # Devices on the /uses/ page. Each item is one card.
 # Fields: name, kind (Laptop, Keyboard, Trackpad, Monitor, 3D printer; sets the icon),
-# note (optional), image (optional, replaces the icon), link (optional).
+# note (optional), image (optional, replaces the icon), link (optional),
+# credit (required for a photo you did not take: author, license, license_url, source;
+# similar: true when the photo shows a similar model, not the exact one).
 - section: Desk
   items:
     - name: MacBook Air M2
       kind: Laptop
+      image: /assets/uses/macbook-air-m2.jpg
+      credit:
+        author: メイド理世
+        license: CC BY-SA 4.0
+        license_url: https://creativecommons.org/licenses/by-sa/4.0/
+        source: https://commons.wikimedia.org/wiki/File:MacBook_Air_(A2681)_front.jpg
     - name: Magic Keyboard with Touch ID
       kind: Keyboard
+      image: /assets/uses/magic-keyboard-touch-id.jpg
+      credit:
+        author: Dbirdz
+        license: CC BY-SA 4.0
+        license_url: https://creativecommons.org/licenses/by-sa/4.0/
+        source: https://commons.wikimedia.org/wiki/File:Magic_Keyboard_with_Touch_ID_for_Mac_models_with_Apple_silicon_-_Swiss.jpg
     - name: Magic Trackpad
       kind: Trackpad
+      image: /assets/uses/magic-trackpad.jpg
+      credit:
+        author: Joshua Kehn
+        license: CC BY-SA 4.0
+        license_url: https://creativecommons.org/licenses/by-sa/4.0/
+        source: https://commons.wikimedia.org/wiki/File:Magic_Trackpad_2.jpg
     - name: Dell S2721HS
       kind: Monitor
+      image: /assets/uses/dell-monitor.jpg
+      credit:
+        similar: true
+        author: IT Photography
+        license: CC BY-SA 4.0
+        license_url: https://creativecommons.org/licenses/by-sa/4.0/
+        source: https://commons.wikimedia.org/wiki/File:Dell_Computer_Monitor.png
 - section: 3D Printing
   items:
     - name: Creality Ender 3 S1
       kind: 3D printer
+      image: /assets/uses/creality-ender-3.jpg
+      credit:
+        similar: true
+        author: kenming Wang
+        license: CC BY-SA 2.0
+        license_url: https://creativecommons.org/licenses/by-sa/2.0/
+        source: https://commons.wikimedia.org/wiki/File:Ender_3x_3D%E5%8D%B0%E8%A1%A8%E6%A9%9F_%E5%A5%97%E4%BB%B6_-_49804730471.jpg

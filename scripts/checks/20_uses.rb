@@ -22,7 +22,18 @@ end
 page = read_page(uses)
 if page
   FAILURES << "#{uses}: expected 5 device cards" unless page.scan('class="use-card"').size == 5
-  FAILURES << "#{uses}: expected an icon on each card without an image" unless page.scan('class="use-icon"').size == 5
+  images = page.scan(%r{<img src="/assets/uses/[^"]+\.jpg"}).size
+  icons = page.scan('class="use-icon"').size
+  FAILURES << "#{uses}: expected an icon on each card without an image" unless images + icons == 5
+  FAILURES << "#{uses}: expected a photo on all 5 cards" unless images == 5
+  # Each photo needs a credit: author or source link, and a license link (CC BY-SA asks for both).
+  credits = page.scan(%r{<p class="use-credit">.*?</p>}m)
+  FAILURES << "#{uses}: expected one photo credit for each photo" unless credits.size == images
+  credits.each do |credit|
+    FAILURES << "#{uses}: credit without a source link: #{credit[0, 80]}" unless credit.include?('href="https://commons.wikimedia.org/wiki/File:')
+    FAILURES << "#{uses}: credit without a license link: #{credit[0, 80]}" unless credit.match?(%r{href="https://creativecommons\.org/licenses/})
+  end
+  FAILURES << "#{uses}: expected a note on the 2 similar-model photos" unless page.scan('Similar model').size == 2
 end
 
 # The other pages keep the sidebar layout.

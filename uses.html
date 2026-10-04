@@ -18,11 +18,12 @@ summary: The hardware and tools I use every day.
     {% for item in group.items %}
     <li class="use-card">
       {% if item.link %}<a class="use-inner" href="{{ item.link }}" target="_blank" rel="noopener">{% else %}<div class="use-inner">{% endif %}
-        <div class="use-media">{% if item.image %}<img src="{{ item.image | relative_url }}" alt="" loading="lazy">{% else %}{% include uses-icon.html kind=item.kind %}{% endif %}</div>
+        <div class="use-media">{% if item.image %}<img src="{{ item.image | relative_url }}" alt="{{ item.name | escape }}" loading="lazy">{% else %}{% include uses-icon.html kind=item.kind %}{% endif %}</div>
         <h3 class="use-name">{{ item.name | escape }}</h3>
         <p class="use-kind">{{ item.kind | escape }}</p>
         {% if item.note %}<p class="use-note">{{ item.note | escape }}</p>{% endif %}
       {% if item.link %}</a>{% else %}</div>{% endif %}
+      {% if item.credit %}<p class="use-credit">{% if item.credit.similar %}Similar model. {% endif %}Photo: <a href="{{ item.credit.source }}" target="_blank" rel="noopener">{{ item.credit.author | escape }}</a>, <a href="{{ item.credit.license_url }}" target="_blank" rel="noopener">{{ item.credit.license | escape }}</a></p>{% endif %}
     </li>
     {% endfor %}
   </ul>

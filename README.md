@@ -69,6 +69,19 @@ Notlar (Markdown).
 
 Yeni bir bölüm için `- section: <ad>` ve altında `items:` ekle.
 
+Başkasının çektiği bir fotoğrafı kullanırsan `credit` alanını doldur. CC BY ve CC BY-SA lisansları yazar ve lisans bilgisini ister:
+
+```yaml
+      credit:
+        author: Joshua Kehn
+        license: CC BY-SA 4.0
+        license_url: https://creativecommons.org/licenses/by-sa/4.0/
+        source: https://commons.wikimedia.org/wiki/File:Magic_Trackpad_2.jpg
+        similar: true      # isteğe bağlı: fotoğraf benzer bir modeli gösteriyorsa
+```
+
+Kendi fotoğrafını kullanırsan `credit` alanını sil.
+
 ## Yerel önizleme
 
 1. Ruby 3.3 kur: `brew install ruby@3.3`
