@@ -1,922 +1,373 @@
-<!DOCTYPE html><html lang="en"><head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>ahmetkorkmaz3</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
-    <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
-    <script src="https://unpkg.com/magic-grid/dist/magic-grid.min.js"></script>
-    <link rel="stylesheet" href="index.css">
-  <link rel="icon" href="https://avatars2.githubusercontent.com/u/29120746?v=4" type="image/png"></head>
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Ahmet Korkmaz — Software Crafter</title>
+  <meta name="description" content="Ahmet Korkmaz — İstanbul'da yaşayan yazılım geliştirici. Backend, web ve açık kaynak projeleri.">
+  <meta name="author" content="Murat Ahmet Korkmaz">
+  <link rel="canonical" href="https://ahmetkorkmaz3.github.io/">
 
-  <body>
-    <div id="loading">
-      <div id="spinner"></div>
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Ahmet Korkmaz — Software Crafter">
+  <meta property="og:description" content="Backend, web ve açık kaynak projeleri.">
+  <meta property="og:url" content="https://ahmetkorkmaz3.github.io/">
+  <meta property="og:image" content="https://avatars.githubusercontent.com/u/29120746?v=4">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:site" content="@ahmetmkorkmaz">
+
+  <link rel="icon" href="img/favicon.ico">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/style.css">
+
+  <script>
+    (function () {
+      var t;
+      try { t = localStorage.getItem('theme'); } catch (e) {}
+      if (!t) t = matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+      document.documentElement.setAttribute('data-theme', t);
+    })();
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Murat Ahmet Korkmaz",
+    "alternateName": "Ahmet Korkmaz",
+    "jobTitle": "Software Developer",
+    "worksFor": { "@type": "Organization", "name": "Moneo" },
+    "address": { "@type": "PostalAddress", "addressLocality": "İstanbul", "addressCountry": "TR" },
+    "alumniOf": "Karadeniz Teknik Üniversitesi",
+    "url": "https://ahmetkorkmaz3.github.io/",
+    "image": "https://avatars.githubusercontent.com/u/29120746?v=4",
+    "sameAs": [
+      "https://github.com/ahmetkorkmaz3",
+      "https://www.linkedin.com/in/muratahmetkorkmaz/",
+      "https://x.com/ahmetmkorkmaz"
+    ]
+  }
+  </script>
+</head>
+<body>
+  <a class="skip" href="#main">İçeriğe geç</a>
+
+  <!-- SVG icon sprite -->
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+    <symbol id="i-github" viewBox="0 0 24 24"><path fill="currentColor" d="M12 .5a11.5 11.5 0 0 0-3.64 22.41c.58.1.79-.25.79-.56v-2c-3.2.7-3.88-1.37-3.88-1.37-.53-1.33-1.28-1.69-1.28-1.69-1.04-.71.08-.7.08-.7 1.16.08 1.77 1.19 1.77 1.19 1.03 1.76 2.7 1.25 3.36.96.1-.75.4-1.25.73-1.54-2.56-.29-5.25-1.28-5.25-5.68 0-1.26.45-2.28 1.19-3.09-.12-.29-.52-1.46.11-3.05 0 0 .97-.31 3.17 1.18a11 11 0 0 1 5.78 0c2.2-1.49 3.17-1.18 3.17-1.18.63 1.59.23 2.76.11 3.05.74.81 1.19 1.83 1.19 3.09 0 4.41-2.7 5.38-5.27 5.67.41.36.78 1.06.78 2.14v3.17c0 .31.21.67.8.56A11.5 11.5 0 0 0 12 .5Z"/></symbol>
+    <symbol id="i-linkedin" viewBox="0 0 24 24"><path fill="currentColor" d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28ZM5.34 7.43a2.06 2.06 0 1 1 0-4.13 2.06 2.06 0 0 1 0 4.13ZM7.12 20.45H3.56V9h3.56v11.45ZM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.73C24 .77 23.2 0 22.22 0Z"/></symbol>
+    <symbol id="i-x" viewBox="0 0 24 24"><path fill="currentColor" d="M18.24 2.25h3.31l-7.23 8.26 8.5 11.24h-6.66l-5.21-6.82-5.97 6.82H1.67l7.73-8.84L1.25 2.25h6.83l4.71 6.23 5.45-6.23Zm-1.16 17.52h1.83L7.08 4.13H5.12l11.96 15.64Z"/></symbol>
+    <symbol id="i-mail" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M4 4h16a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2Zm18 2-10 7L2 6"/></symbol>
+    <symbol id="i-ext" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6M15 3h6v6M10 14 21 3"/></symbol>
+    <symbol id="i-star" viewBox="0 0 24 24"><path fill="currentColor" d="m12 2 3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2Z"/></symbol>
+    <symbol id="i-folder" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2Z"/></symbol>
+    <symbol id="i-sun" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></g></symbol>
+    <symbol id="i-moon" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79Z"/></symbol>
+    <symbol id="i-menu" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" d="M3 6h18M3 12h18M3 18h18"/></symbol>
+    <symbol id="i-file" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8Zm0 0v6h6M12 18v-6M9 15l3 3 3-3"/></symbol>
+  </svg>
+
+  <header class="site-header">
+    <nav class="container nav" aria-label="Ana menü">
+      <a class="brand" href="#top">ahmet<span>.</span>korkmaz</a>
+      <ul class="nav-links" id="nav-links">
+        <li><a href="#hakkimda">Hakkımda</a></li>
+        <li><a href="#deneyim">Deneyim</a></li>
+        <li><a href="#projeler">Projeler</a></li>
+        <li><a href="#yetenekler">Yetenekler</a></li>
+        <li><a href="#iletisim">İletişim</a></li>
+      </ul>
+      <div class="nav-actions">
+        <button class="icon-btn" type="button" data-theme-toggle aria-label="Temayı değiştir">
+          <svg class="theme-icon-light"><use href="#i-moon"/></svg>
+          <svg class="theme-icon-dark"><use href="#i-sun"/></svg>
+        </button>
+        <button class="icon-btn menu-btn" type="button" data-menu-toggle aria-label="Menüyü aç" aria-controls="nav-links" aria-expanded="false">
+          <svg><use href="#i-menu"/></svg>
+        </button>
+      </div>
+    </nav>
+  </header>
+
+  <main id="main">
+    <!-- ========== HERO ========== -->
+    <section class="hero" id="top">
+      <div class="container hero-grid">
+        <div>
+          <div class="eyebrow"><span class="dot"></span>İstanbul · Moneo</div>
+          <h1>Merhaba, ben <span class="accent">Ahmet</span>.<br>Yazılım geliştiriyorum.</h1>
+          <p class="lead">
+            Backend ağırlıklı çalışan bir yazılım geliştiriciyim. Temiz, test edilebilir ve
+            uzun ömürlü yazılım yapmayı seviyorum. Boş zamanımda küçük araçlar ve açık kaynak
+            projeler geliştiriyorum.
+          </p>
+          <div class="cta">
+            <a class="btn btn-primary" href="#projeler">Projelerimi gör</a>
+            <a class="btn" href="#iletisim"><svg><use href="#i-mail"/></svg>İletişime geç</a>
+          </div>
+          <div class="socials">
+            <a class="icon-btn" href="https://github.com/ahmetkorkmaz3" target="_blank" rel="noopener" aria-label="GitHub"><svg><use href="#i-github"/></svg></a>
+            <a class="icon-btn" href="https://www.linkedin.com/in/muratahmetkorkmaz/" target="_blank" rel="noopener" aria-label="LinkedIn"><svg><use href="#i-linkedin"/></svg></a>
+            <a class="icon-btn" href="https://x.com/ahmetmkorkmaz" target="_blank" rel="noopener" aria-label="X (Twitter)"><svg><use href="#i-x"/></svg></a>
+          </div>
+        </div>
+        <img class="avatar" src="https://avatars.githubusercontent.com/u/29120746?v=4" alt="Ahmet Korkmaz" width="220" height="220">
+      </div>
+    </section>
+
+    <!-- ========== ABOUT ========== -->
+    <section id="hakkimda">
+      <div class="container">
+        <div class="section-head reveal"><span class="num">01</span><h2>Hakkımda</h2></div>
+        <div class="about-grid">
+          <div class="reveal">
+            <p>
+              Karadeniz Teknik Üniversitesi Yazılım Mühendisliği bölümünden mezun oldum.
+              Üniversite yıllarında KTÜ Yazılım Kulübü'nün başkanlığını yaptım, hackathon ve
+              eğitim etkinlikleri düzenledim. Özgür yazılım ve topluluk çalışmaları beni
+              bu mesleğe bağlayan en önemli şey oldu.
+            </p>
+            <p>
+              Bugün İstanbul'da <strong>Moneo</strong>'da çalışıyorum. Ağırlıklı olarak PHP / Laravel ve
+              Node.js ile backend servisleri geliştiriyorum. Gerektiğinde Vue, React ve
+              TypeScript ile arayüz tarafında da çalışıyorum.
+            </p>
+            <p>
+              Kendimi bir <em>software crafter</em> olarak görüyorum: iyi isimlendirme, küçük ve
+              anlaşılır fonksiyonlar, otomatik testler ve sürekli iyileştirme benim için
+              önemli.
+            </p>
+          </div>
+          <ul class="facts reveal">
+            <li><span>Konum</span><span>İstanbul, Türkiye</span></li>
+            <li><span>Şirket</span><span>Moneo</span></li>
+            <li><span>Odak</span><span>Backend · Web</span></li>
+            <li><span>Eğitim</span><span>KTÜ Yazılım Mühendisliği</span></li>
+            <li><span>Diller</span><span>Türkçe · İngilizce</span></li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== EXPERIENCE ========== -->
+    <!-- TODO: Moneo için unvan ve başlangıç tarihini, 2020 sonrası diğer işleri ekle. -->
+    <section id="deneyim">
+      <div class="container">
+        <div class="section-head reveal"><span class="num">02</span><h2>Deneyim</h2></div>
+        <ol class="timeline">
+          <li class="current reveal">
+            <div class="tl-head">
+              <h3>Yazılım Geliştirici · <span class="org">Moneo</span></h3>
+              <span class="tl-date">Bugün</span>
+            </div>
+            <div class="tl-body">
+              <p>Backend servisleri ve web uygulamaları geliştiriyorum.</p>
+              <ul class="tags">
+                <li>PHP</li><li>Laravel</li><li>Node.js</li><li>MySQL</li><li>GitLab CI</li>
+              </ul>
+            </div>
+          </li>
+          <li class="reveal">
+            <div class="tl-head">
+              <h3>Yazılım Geliştirici · <span class="org">MaxiThings</span></h3>
+              <span class="tl-date">Üniversite dönemi</span>
+            </div>
+            <div class="tl-body">
+              <ul>
+                <li>Ionic Framework ile mobil uygulama geliştirdim.</li>
+                <li>PHP / Symfony ile web uygulamaları geliştirdim.</li>
+              </ul>
+              <ul class="tags">
+                <li>Ionic</li><li>PHP</li><li>Symfony</li>
+              </ul>
+            </div>
+          </li>
+          <li class="reveal">
+            <div class="tl-head">
+              <h3>Yazılım Mühendisliği · <span class="org">Karadeniz Teknik Üniversitesi</span></h3>
+              <span class="tl-date">Lisans</span>
+            </div>
+            <div class="tl-body">
+              <p>Trabzon. KTÜ Yazılım Kulübü Yönetim Kurulu Başkanı.</p>
+            </div>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- ========== PROJECTS ========== -->
+    <section id="projeler">
+      <div class="container">
+        <div class="section-head reveal"><span class="num">03</span><h2>Öne Çıkan Projeler</h2></div>
+        <div class="projects">
+
+          <article class="card reveal">
+            <div class="card-top">
+              <svg class="folder"><use href="#i-folder"/></svg>
+              <div class="card-links">
+                <a href="https://github.com/ahmetkorkmaz3/contra" target="_blank" rel="noopener" aria-label="contra GitHub"><svg><use href="#i-github"/></svg></a>
+              </div>
+            </div>
+            <h3><a href="https://github.com/ahmetkorkmaz3/contra" target="_blank" rel="noopener">Contra</a></h3>
+            <p>GitHub ve GitLab katkı takvimlerini birleştirip tek bir takvim olarak gösteren uygulama. Ayrı bir API servisi ile çalışır.</p>
+            <ul class="tags"><li>Vue</li><li>Node.js</li><li>GitHub API</li><li>GitLab API</li></ul>
+            <div class="card-meta" style="margin-top:16px">
+              <span class="stars"><svg><use href="#i-star"/></svg><span data-repo="contra">27</span></span>
+            </div>
+          </article>
+
+          <article class="card reveal">
+            <div class="card-top">
+              <svg class="folder"><use href="#i-folder"/></svg>
+              <div class="card-links">
+                <a href="https://github.com/ahmetkorkmaz3/clipaste" target="_blank" rel="noopener" aria-label="clipaste GitHub"><svg><use href="#i-github"/></svg></a>
+              </div>
+            </div>
+            <h3><a href="https://github.com/ahmetkorkmaz3/clipaste" target="_blank" rel="noopener">Clipaste</a></h3>
+            <p>Kopyaladığınız metinlerin geçmişini tutan ve hızlıca tekrar yapıştırmanızı sağlayan masaüstü pano yöneticisi.</p>
+            <ul class="tags"><li>JavaScript</li><li>Electron</li><li>Desktop</li></ul>
+            <div class="card-meta" style="margin-top:16px">
+              <span class="stars"><svg><use href="#i-star"/></svg><span data-repo="clipaste">17</span></span>
+            </div>
+          </article>
+
+          <article class="card reveal">
+            <div class="card-top">
+              <svg class="folder"><use href="#i-folder"/></svg>
+              <div class="card-links">
+                <a href="https://github.com/ahmetkorkmaz3/guvercin" target="_blank" rel="noopener" aria-label="guvercin GitHub"><svg><use href="#i-github"/></svg></a>
+              </div>
+            </div>
+            <h3><a href="https://github.com/ahmetkorkmaz3/guvercin" target="_blank" rel="noopener">Güvercin</a></h3>
+            <p>REST API isteklerini göndermek ve yanıtları incelemek için geliştirilmiş masaüstü istemci uygulaması.</p>
+            <ul class="tags"><li>Electron</li><li>JavaScript</li><li>REST</li></ul>
+            <div class="card-meta" style="margin-top:16px">
+              <span class="stars"><svg><use href="#i-star"/></svg><span data-repo="guvercin">1</span></span>
+            </div>
+          </article>
+
+          <article class="card reveal">
+            <div class="card-top">
+              <svg class="folder"><use href="#i-folder"/></svg>
+              <div class="card-links">
+                <a href="https://github.com/orcuntuna/stajyerco" target="_blank" rel="noopener" aria-label="stajyer.co GitHub"><svg><use href="#i-github"/></svg></a>
+              </div>
+            </div>
+            <h3><a href="https://github.com/orcuntuna/stajyerco" target="_blank" rel="noopener">Stajyer.co</a></h3>
+            <p>Firmaların staj ilanı yayımladığı, öğrencilerin CV hazırlayıp başvurduğu platform. Backend API'sini geliştirdim.</p>
+            <ul class="tags"><li>Node.js</li><li>Express</li><li>MongoDB</li></ul>
+          </article>
+
+          <article class="card reveal">
+            <div class="card-top">
+              <svg class="folder"><use href="#i-folder"/></svg>
+              <div class="card-links">
+                <a href="https://github.com/ahmetkorkmaz3/chat-app-ionic" target="_blank" rel="noopener" aria-label="chat-app-ionic GitHub"><svg><use href="#i-github"/></svg></a>
+              </div>
+            </div>
+            <h3><a href="https://github.com/ahmetkorkmaz3/chat-app-ionic" target="_blank" rel="noopener">Şifreli Chat App</a></h3>
+            <p>Farklı şifreleme algoritmalarıyla mesajlaşmayı deneyen mobil uygulama. Sunucu tarafı Node.js ve Socket.io ile yazıldı.</p>
+            <ul class="tags"><li>Ionic</li><li>Socket.io</li><li>Node.js</li></ul>
+            <div class="card-meta" style="margin-top:16px">
+              <span class="stars"><svg><use href="#i-star"/></svg><span data-repo="chat-app-ionic">2</span></span>
+            </div>
+          </article>
+
+          <article class="card reveal">
+            <div class="card-top">
+              <svg class="folder"><use href="#i-folder"/></svg>
+              <div class="card-links">
+                <a href="https://github.com/ahmetkorkmaz3/laravel-api-template" target="_blank" rel="noopener" aria-label="laravel-api-template GitHub"><svg><use href="#i-github"/></svg></a>
+              </div>
+            </div>
+            <h3><a href="https://github.com/ahmetkorkmaz3/laravel-api-template" target="_blank" rel="noopener">Laravel API Template</a></h3>
+            <p>Kimlik doğrulama hazır gelen, yeni Laravel API projelerine hızlı başlamak için hazırladığım şablon.</p>
+            <ul class="tags"><li>PHP</li><li>Laravel</li><li>REST</li></ul>
+          </article>
+
+        </div>
+        <div class="more reveal">
+          <a class="btn" href="https://github.com/ahmetkorkmaz3?tab=repositories" target="_blank" rel="noopener"><svg><use href="#i-github"/></svg>Tüm projeler GitHub'da</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== SKILLS ========== -->
+    <section id="yetenekler">
+      <div class="container">
+        <div class="section-head reveal"><span class="num">04</span><h2>Yetenekler</h2></div>
+        <div class="skills">
+          <div class="skill-group reveal">
+            <h3>// backend</h3>
+            <ul class="tags"><li>PHP</li><li>Laravel</li><li>Symfony</li><li>Node.js</li><li>Express</li><li>Python</li><li>Django</li><li>Flask</li><li>GraphQL</li></ul>
+          </div>
+          <div class="skill-group reveal">
+            <h3>// frontend &amp; mobil</h3>
+            <ul class="tags"><li>JavaScript</li><li>TypeScript</li><li>Vue</li><li>React</li><li>Ionic</li><li>Electron</li><li>HTML / CSS</li></ul>
+          </div>
+          <div class="skill-group reveal">
+            <h3>// veri</h3>
+            <ul class="tags"><li>MySQL</li><li>MongoDB</li><li>SQLite</li></ul>
+          </div>
+          <div class="skill-group reveal">
+            <h3>// araçlar &amp; pratikler</h3>
+            <ul class="tags"><li>Git</li><li>Docker</li><li>GitLab CI</li><li>Linux</li><li>Bash</li><li>Test yazımı</li><li>Design Patterns</li></ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== COMMUNITY ========== -->
+    <section id="topluluk">
+      <div class="container">
+        <div class="section-head reveal"><span class="num">05</span><h2>Topluluk</h2></div>
+        <div class="community">
+          <div class="item reveal">
+            <h3>KTÜ Yazılım Kulübü</h3>
+            <p>Yönetim Kurulu Başkanı. Eğitimler, atölyeler ve kulübün ilk hackathon'unu düzenledik.</p>
+          </div>
+          <div class="item reveal">
+            <h3>NASA Space Apps Challenge 2018</h3>
+            <p>Türkiye'deki tek lokasyon olan Trabzon etkinliğinin organizasyon ekibi. 18 takım, 2 gün.</p>
+          </div>
+          <div class="item reveal">
+            <h3>Özgür Yazılım Yaz Kampı '18</h3>
+            <p>Python / Django ile Web Programlama sınıfı. Deductive Reasoning projesinde ekip çalışması.</p>
+          </div>
+          <div class="item reveal">
+            <h3>Django Girls</h3>
+            <p>Workshop mentorluğu. Katılımcıların ilk web uygulamalarını yapmalarına yardım ettim.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ========== CONTACT ========== -->
+    <section id="iletisim">
+      <div class="container">
+        <div class="contact-box reveal">
+          <h2>Birlikte çalışalım</h2>
+          <p>Bir proje fikri, iş teklifi ya da sadece merhaba demek için bana yazabilirsiniz. En kısa sürede dönüş yaparım.</p>
+          <div class="cta">
+            <a class="btn btn-primary" href="mailto:ahmetkorkmaz3453@gmail.com"><svg><use href="#i-mail"/></svg>E-posta gönder</a>
+            <a class="btn" href="https://www.linkedin.com/in/muratahmetkorkmaz/" target="_blank" rel="noopener"><svg><use href="#i-linkedin"/></svg>LinkedIn</a>
+            <a class="btn" href="CV/Murat-Ahmet-Korkmaz-CV.pdf" target="_blank" rel="noopener"><svg><use href="#i-file"/></svg>CV</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <span>© <span data-year>2026</span> Murat Ahmet Korkmaz</span>
+      <span class="mono">İstanbul'dan sevgilerle ☕</span>
     </div>
-    <div id="profile">
-      <div id="profile_img" style="background: url(https://avatars2.githubusercontent.com/u/29120746?v=4) center;"></div>
-      <div id="username"><span style="display:block;">Ahmet Korkmaz</span><a href="https://github.com/ahmetkorkmaz3">@ahmetkorkmaz3</a></div>
-      <div id="userbio" style="display: block;">Karadeniz Technical University Software Engineering</div>
-      <div id="about">
-                <span style="display:none;"><i class="fas fa-users"></i> &nbsp; null</span>
-                <span style="display:none;"><i class="fas fa-envelope"></i> &nbsp; null</span>
-                <span style="display:block;"><i class="fas fa-link"></i> &nbsp; <a href="ahmetkorkmaz3.github.io">ahmetkorkmaz3.github.io</a></span>
-                <span style="display:block;"><i class="fas fa-map-marker-alt"></i> &nbsp;&nbsp; İstanbul</span>
-                <span style="display:none;"><i class="fas fa-user-tie"></i> &nbsp;&nbsp; Available for hire</span>
-                <div class="socials">
-                <span style="display:block;"><a href="https://www.twitter.com/ahmetmkorkmaz" target="_blank" class="socials"><i class="fab fa-twitter"></i></a></span>
-                <span style="display:none !important;"><a href="https://www.dribbble.com/null" target="_blank" class="socials"><i class="fab fa-dribbble"></i></a></span>
-                <span style="display:block;"><a href="https://www.linkedin.com/in/muratahmetkorkmaz/" target="_blank" class="socials"><i class="fab fa-linkedin-in"></i></a></span>
-                <span style="display:none !important;"><a href="https://www.medium.com/@null/" target="_blank" class="socials"><i class="fab fa-medium-m"></i></a></span>
-                </div>
-                </div>
-    </div>
-    <div id="display">
-      <div id="work">
-        <h1>Work.</h1>
-        <div class="projects" id="work_section">
-                        <a href="https://github.com/ahmetkorkmaz3/trello-api" target="_blank">
-                        <section>
-                            <div class="section_title">trello-api</div>
-                            <div class="about_section">
-                            <span style="display:block;">Trello Clone API.</span>
-                            </div>
-                            <div class="bottom_section">
-                                <span style="display:inline-block;"><i class="fas fa-code"></i>&nbsp; PHP</span>
-                                <span><i class="fas fa-star"></i>&nbsp; 0</span>
-                                <span><i class="fas fa-code-branch"></i>&nbsp; 0</span>
-                            </div>
-                        </section>
-                        </a>
-                        <a href="https://github.com/ahmetkorkmaz3/olasilik" target="_blank">
-                        <section>
-                            <div class="section_title">olasilik</div>
-                            <div class="about_section">
-                            <span style="display:none;">undefined</span>
-                            </div>
-                            <div class="bottom_section">
-                                <span style="display:inline-block;"><i class="fas fa-code"></i>&nbsp; Python</span>
-                                <span><i class="fas fa-star"></i>&nbsp; 0</span>
-                                <span><i class="fas fa-code-branch"></i>&nbsp; 0</span>
-                            </div>
-                        </section>
-                        </a>
-                        <a href="https://github.com/ahmetkorkmaz3/simple-api-with-graphql" target="_blank">
-                        <section>
-                            <div class="section_title">simple-api-with-graphql</div>
-                            <div class="about_section">
-                            <span style="display:none;">undefined</span>
-                            </div>
-                            <div class="bottom_section">
-                                <span style="display:inline-block;"><i class="fas fa-code"></i>&nbsp; JavaScript</span>
-                                <span><i class="fas fa-star"></i>&nbsp; 1</span>
-                                <span><i class="fas fa-code-branch"></i>&nbsp; 0</span>
-                            </div>
-                        </section>
-                        </a>
-                        <a href="https://github.com/ahmetkorkmaz3/clipaste" target="_blank">
-                        <section>
-                            <div class="section_title">clipaste</div>
-                            <div class="about_section">
-                            <span style="display:block;">Clipboard Manager Tool</span>
-                            </div>
-                            <div class="bottom_section">
-                                <span style="display:inline-block;"><i class="fas fa-code"></i>&nbsp; JavaScript</span>
-                                <span><i class="fas fa-star"></i>&nbsp; 3</span>
-                                <span><i class="fas fa-code-branch"></i>&nbsp; 0</span>
-                            </div>
-                        </section>
-                        </a>
-                        <a href="https://github.com/ahmetkorkmaz3/currency-exchange-cli" target="_blank">
-                        <section>
-                            <div class="section_title">currency-exchange-cli</div>
-                            <div class="about_section">
-                            <span style="display:none;">undefined</span>
-                            </div>
-                            <div class="bottom_section">
-                                <span style="display:inline-block;"><i class="fas fa-code"></i>&nbsp; Python</span>
-                                <span><i class="fas fa-star"></i>&nbsp; 0</span>
-                                <span><i class="fas fa-code-branch"></i>&nbsp; 0</span>
-                            </div>
-                        </section>
-                        </a>
-                        <a href="https://github.com/ahmetkorkmaz3/url-shortener-flutter" target="_blank">
-                        <section>
-                            <div class="section_title">url-shortener-flutter</div>
-                            <div class="about_section">
-                            <span style="display:none;">undefined</span>
-                            </div>
-                            <div class="bottom_section">
-                                <span style="display:inline-block;"><i class="fas fa-code"></i>&nbsp; Dart</span>
-                                <span><i class="fas fa-star"></i>&nbsp; 1</span>
-                                <span><i class="fas fa-code-branch"></i>&nbsp; 2</span>
-                            </div>
-                        </section>
-                        </a>
-                        <a href="https://github.com/bilalkocak/ortak-api" target="_blank">
-                        <section>
-                            <div class="section_title">ortak-api</div>
-                            <div class="about_section">
-                            <span style="display:block;">Ortak App, aynı alanı paylaşan ve ortak harcamaları olan kişilerin giderlerini takip etmesine fayda sağlayan bir mobil uygulama.</span>
-                            </div>
-                            <div class="bottom_section">
-                                <span style="display:inline-block;"><i class="fas fa-code"></i>&nbsp; JavaScript</span>
-                                <span><i class="fas fa-star"></i>&nbsp; 1</span>
-                                <span><i class="fas fa-code-branch"></i>&nbsp; 0</span>
-                            </div>
-                        </section>
-                        </a>
-                        <a href="https://github.com/ahmetkorkmaz3/ahmetkorkmaz3.github.io" target="_blank">
-                        <section>
-                            <div class="section_title">ahmetkorkmaz3.github.io</div>
-                            <div class="about_section">
-                            <span style="display:none;">undefined</span>
-                            </div>
-                            <div class="bottom_section">
-                                <span style="display:inline-block;"><i class="fas fa-code"></i>&nbsp; HTML</span>
-                                <span><i class="fas fa-star"></i>&nbsp; 0</span>
-                                <span><i class="fas fa-code-branch"></i>&nbsp; 0</span>
-                            </div>
-                        </section>
-                        </a>
-                        <a href="https://github.com/orcuntuna/stajyerco" target="_blank">
-                        <section>
-                            <div class="section_title">stajyerco</div>
-                            <div class="about_section">
-                            <span style="display:block;">küllerinden doğan anka kuşu</span>
-                            </div>
-                            <div class="bottom_section">
-                                <span style="display:inline-block;"><i class="fas fa-code"></i>&nbsp; JavaScript</span>
-                                <span><i class="fas fa-star"></i>&nbsp; 2</span>
-                                <span><i class="fas fa-code-branch"></i>&nbsp; 1</span>
-                            </div>
-                        </section>
-                        </a>
-                        <a href="https://github.com/orcuntuna/guvercin" target="_blank">
-                        <section>
-                            <div class="section_title">guvercin</div>
-                            <div class="about_section">
-                            <span style="display:block;">REST Api Client Application</span>
-                            </div>
-                            <div class="bottom_section">
-                                <span style="display:inline-block;"><i class="fas fa-code"></i>&nbsp; JavaScript</span>
-                                <span><i class="fas fa-star"></i>&nbsp; 40</span>
-                                <span><i class="fas fa-code-branch"></i>&nbsp; 2</span>
-                            </div>
-                        </section>
-                        </a>
-                        <a href="https://github.com/ahmetkorkmaz3/linux-special-commands" target="_blank">
-                        <section>
-                            <div class="section_title">linux-special-commands</div>
-                            <div class="about_section">
-                            <span style="display:none;">undefined</span>
-                            </div>
-                            <div class="bottom_section">
-                                <span style="display:inline-block;"><i class="fas fa-code"></i>&nbsp; Shell</span>
-                                <span><i class="fas fa-star"></i>&nbsp; 1</span>
-                                <span><i class="fas fa-code-branch"></i>&nbsp; 0</span>
-                            </div>
-                        </section>
-                        </a>
-                        <a href="https://github.com/ahmetkorkmaz3/yazilim-ktu-git" target="_blank">
-                        <section>
-                            <div class="section_title">yazilim-ktu-git</div>
-                            <div class="about_section">
-                            <span style="display:block;">Yazılım Kulübü Git Eğitimi</span>
-                            </div>
-                            <div class="bottom_section">
-                                <span style="display:inline-block;"><i class="fas fa-code"></i>&nbsp; HTML</span>
-                                <span><i class="fas fa-star"></i>&nbsp; 0</span>
-                                <span><i class="fas fa-code-branch"></i>&nbsp; 0</span>
-                            </div>
-                        </section>
-                        </a>
-                        <a href="https://github.com/ahmetkorkmaz3/yazilim-ktu-101" target="_blank">
-                        <section>
-                            <div class="section_title">yazilim-ktu-101</div>
-                            <div class="about_section">
-                            <span style="display:none;">undefined</span>
-                            </div>
-                            <div class="bottom_section">
-                                <span style="display:inline-block;"><i class="fas fa-code"></i>&nbsp; HTML</span>
-                                <span><i class="fas fa-star"></i>&nbsp; 0</span>
-                                <span><i class="fas fa-code-branch"></i>&nbsp; 0</span>
-                            </div>
-                        </section>
-                        </a>
-                        <a href="https://github.com/ahmetkorkmaz3/chat-app-ionic" target="_blank">
-                        <section>
-                            <div class="section_title">chat-app-ionic</div>
-                            <div class="about_section">
-                            <span style="display:none;">undefined</span>
-                            </div>
-                            <div class="bottom_section">
-                                <span style="display:inline-block;"><i class="fas fa-code"></i>&nbsp; TypeScript</span>
-                                <span><i class="fas fa-star"></i>&nbsp; 2</span>
-                                <span><i class="fas fa-code-branch"></i>&nbsp; 0</span>
-                            </div>
-                        </section>
-                        </a>
-                        <a href="https://github.com/ahmetkorkmaz3/openvidu-ionic" target="_blank">
-                        <section>
-                            <div class="section_title">openvidu-ionic</div>
-                            <div class="about_section">
-                            <span style="display:none;">undefined</span>
-                            </div>
-                            <div class="bottom_section">
-                                <span style="display:inline-block;"><i class="fas fa-code"></i>&nbsp; JavaScript</span>
-                                <span><i class="fas fa-star"></i>&nbsp; 0</span>
-                                <span><i class="fas fa-code-branch"></i>&nbsp; 0</span>
-                            </div>
-                        </section>
-                        </a>
-                        <a href="https://github.com/ahmetkorkmaz3/openvidu-live-stream-web" target="_blank">
-                        <section>
-                            <div class="section_title">openvidu-live-stream-web</div>
-                            <div class="about_section">
-                            <span style="display:none;">undefined</span>
-                            </div>
-                            <div class="bottom_section">
-                                <span style="display:inline-block;"><i class="fas fa-code"></i>&nbsp; JavaScript</span>
-                                <span><i class="fas fa-star"></i>&nbsp; 0</span>
-                                <span><i class="fas fa-code-branch"></i>&nbsp; 0</span>
-                            </div>
-                        </section>
-                        </a>
-                        <a href="https://github.com/ahmetkorkmaz3/python-reminder" target="_blank">
-                        <section>
-                            <div class="section_title">python-reminder</div>
-                            <div class="about_section">
-                            <span style="display:none;">undefined</span>
-                            </div>
-                            <div class="bottom_section">
-                                <span style="display:inline-block;"><i class="fas fa-code"></i>&nbsp; Python</span>
-                                <span><i class="fas fa-star"></i>&nbsp; 0</span>
-                                <span><i class="fas fa-code-branch"></i>&nbsp; 0</span>
-                            </div>
-                        </section>
-                        </a>
-                        <a href="https://github.com/ahmetkorkmaz3/nodejs-streaming" target="_blank">
-                        <section>
-                            <div class="section_title">nodejs-streaming</div>
-                            <div class="about_section">
-                            <span style="display:none;">undefined</span>
-                            </div>
-                            <div class="bottom_section">
-                                <span style="display:inline-block;"><i class="fas fa-code"></i>&nbsp; HTML</span>
-                                <span><i class="fas fa-star"></i>&nbsp; 0</span>
-                                <span><i class="fas fa-code-branch"></i>&nbsp; 0</span>
-                            </div>
-                        </section>
-                        </a>
-                        <a href="https://github.com/osmantunahan99/html-begin" target="_blank">
-                        <section>
-                            <div class="section_title">html-begin</div>
-                            <div class="about_section">
-                            <span style="display:none;">undefined</span>
-                            </div>
-                            <div class="bottom_section">
-                                <span style="display:inline-block;"><i class="fas fa-code"></i>&nbsp; HTML</span>
-                                <span><i class="fas fa-star"></i>&nbsp; 0</span>
-                                <span><i class="fas fa-code-branch"></i>&nbsp; 1</span>
-                            </div>
-                        </section>
-                        </a>
-                        <a href="https://github.com/ahmetkorkmaz3/HTML-WebCam" target="_blank">
-                        <section>
-                            <div class="section_title">HTML-WebCam</div>
-                            <div class="about_section">
-                            <span style="display:none;">undefined</span>
-                            </div>
-                            <div class="bottom_section">
-                                <span style="display:inline-block;"><i class="fas fa-code"></i>&nbsp; HTML</span>
-                                <span><i class="fas fa-star"></i>&nbsp; 0</span>
-                                <span><i class="fas fa-code-branch"></i>&nbsp; 0</span>
-                            </div>
-                        </section>
-                        </a>
-                        <a href="https://github.com/ahmetkorkmaz3/nltk-stopwords" target="_blank">
-                        <section>
-                            <div class="section_title">nltk-stopwords</div>
-                            <div class="about_section">
-                            <span style="display:none;">undefined</span>
-                            </div>
-                            <div class="bottom_section">
-                                <span style="display:inline-block;"><i class="fas fa-code"></i>&nbsp; Python</span>
-                                <span><i class="fas fa-star"></i>&nbsp; 0</span>
-                                <span><i class="fas fa-code-branch"></i>&nbsp; 0</span>
-                            </div>
-                        </section>
-                        </a>
-                        <a href="https://github.com/ahmetkorkmaz3/test-symfony" target="_blank">
-                        <section>
-                            <div class="section_title">test-symfony</div>
-                            <div class="about_section">
-                            <span style="display:none;">undefined</span>
-                            </div>
-                            <div class="bottom_section">
-                                <span style="display:inline-block;"><i class="fas fa-code"></i>&nbsp; CSS</span>
-                                <span><i class="fas fa-star"></i>&nbsp; 0</span>
-                                <span><i class="fas fa-code-branch"></i>&nbsp; 0</span>
-                            </div>
-                        </section>
-                        </a>
-                        <a href="https://github.com/ahmetkorkmaz3/simple-symfony-project" target="_blank">
-                        <section>
-                            <div class="section_title">simple-symfony-project</div>
-                            <div class="about_section">
-                            <span style="display:none;">undefined</span>
-                            </div>
-                            <div class="bottom_section">
-                                <span style="display:inline-block;"><i class="fas fa-code"></i>&nbsp; JavaScript</span>
-                                <span><i class="fas fa-star"></i>&nbsp; 0</span>
-                                <span><i class="fas fa-code-branch"></i>&nbsp; 0</span>
-                            </div>
-                        </section>
-                        </a>
-                        <a href="https://github.com/ahmetkorkmaz3/html-template" target="_blank">
-                        <section>
-                            <div class="section_title">html-template</div>
-                            <div class="about_section">
-                            <span style="display:none;">undefined</span>
-                            </div>
-                            <div class="bottom_section">
-                                <span style="display:inline-block;"><i class="fas fa-code"></i>&nbsp; CSS</span>
-                                <span><i class="fas fa-star"></i>&nbsp; 0</span>
-                                <span><i class="fas fa-code-branch"></i>&nbsp; 0</span>
-                            </div>
-                        </section>
-                        </a>
-                        <a href="https://github.com/ahmetkorkmaz3/electro-pass" target="_blank">
-                        <section>
-                            <div class="section_title">electro-pass</div>
-                            <div class="about_section">
-                            <span style="display:none;">undefined</span>
-                            </div>
-                            <div class="bottom_section">
-                                <span style="display:inline-block;"><i class="fas fa-code"></i>&nbsp; CSS</span>
-                                <span><i class="fas fa-star"></i>&nbsp; 0</span>
-                                <span><i class="fas fa-code-branch"></i>&nbsp; 0</span>
-                            </div>
-                        </section>
-                        </a>
-                        <a href="https://github.com/ahmetkorkmaz3/filimadami.com" target="_blank">
-                        <section>
-                            <div class="section_title">filimadami.com</div>
-                            <div class="about_section">
-                            <span style="display:none;">undefined</span>
-                            </div>
-                            <div class="bottom_section">
-                                <span style="display:inline-block;"><i class="fas fa-code"></i>&nbsp; CSS</span>
-                                <span><i class="fas fa-star"></i>&nbsp; 0</span>
-                                <span><i class="fas fa-code-branch"></i>&nbsp; 0</span>
-                            </div>
-                        </section>
-                        </a>
-                        <a href="https://github.com/ahmetkorkmaz3/KeepPassword" target="_blank">
-                        <section>
-                            <div class="section_title">KeepPassword</div>
-                            <div class="about_section">
-                            <span style="display:none;">undefined</span>
-                            </div>
-                            <div class="bottom_section">
-                                <span style="display:inline-block;"><i class="fas fa-code"></i>&nbsp; PHP</span>
-                                <span><i class="fas fa-star"></i>&nbsp; 0</span>
-                                <span><i class="fas fa-code-branch"></i>&nbsp; 0</span>
-                            </div>
-                        </section>
-                        </a>
-                        <a href="https://github.com/ahmetkorkmaz3/recipe-share-django" target="_blank">
-                        <section>
-                            <div class="section_title">recipe-share-django</div>
-                            <div class="about_section">
-                            <span style="display:block;">Recipe Share</span>
-                            </div>
-                            <div class="bottom_section">
-                                <span style="display:inline-block;"><i class="fas fa-code"></i>&nbsp; JavaScript</span>
-                                <span><i class="fas fa-star"></i>&nbsp; 0</span>
-                                <span><i class="fas fa-code-branch"></i>&nbsp; 0</span>
-                            </div>
-                        </section>
-                        </a>
-                        <a href="https://github.com/ahmetkorkmaz3/Dict-Game" target="_blank">
-                        <section>
-                            <div class="section_title">Dict-Game</div>
-                            <div class="about_section">
-                            <span style="display:none;">undefined</span>
-                            </div>
-                            <div class="bottom_section">
-                                <span style="display:inline-block;"><i class="fas fa-code"></i>&nbsp; HTML</span>
-                                <span><i class="fas fa-star"></i>&nbsp; 0</span>
-                                <span><i class="fas fa-code-branch"></i>&nbsp; 0</span>
-                            </div>
-                        </section>
-                        </a>
-                        <a href="https://github.com/ahmetkorkmaz3/gatsby-starter-blog" target="_blank">
-                        <section>
-                            <div class="section_title">gatsby-starter-blog</div>
-                            <div class="about_section">
-                            <span style="display:none;">undefined</span>
-                            </div>
-                            <div class="bottom_section">
-                                <span style="display:inline-block;"><i class="fas fa-code"></i>&nbsp; JavaScript</span>
-                                <span><i class="fas fa-star"></i>&nbsp; 0</span>
-                                <span><i class="fas fa-code-branch"></i>&nbsp; 0</span>
-                            </div>
-                        </section>
-                        </a>
-                        <a href="https://github.com/ahmetkorkmaz3/sinefil.com-clone" target="_blank">
-                        <section>
-                            <div class="section_title">sinefil.com-clone</div>
-                            <div class="about_section">
-                            <span style="display:none;">undefined</span>
-                            </div>
-                            <div class="bottom_section">
-                                <span style="display:inline-block;"><i class="fas fa-code"></i>&nbsp; CSS</span>
-                                <span><i class="fas fa-star"></i>&nbsp; 0</span>
-                                <span><i class="fas fa-code-branch"></i>&nbsp; 0</span>
-                            </div>
-                        </section>
-                        </a>
-                        <a href="https://github.com/ahmetkorkmaz3/Olasilik-Istatistik" target="_blank">
-                        <section>
-                            <div class="section_title">Olasilik-Istatistik</div>
-                            <div class="about_section">
-                            <span style="display:none;">undefined</span>
-                            </div>
-                            <div class="bottom_section">
-                                <span style="display:inline-block;"><i class="fas fa-code"></i>&nbsp; Python</span>
-                                <span><i class="fas fa-star"></i>&nbsp; 0</span>
-                                <span><i class="fas fa-code-branch"></i>&nbsp; 0</span>
-                            </div>
-                        </section>
-                        </a>
-                        <a href="https://github.com/ahmetkorkmaz3/SekilMatematik" target="_blank">
-                        <section>
-                            <div class="section_title">SekilMatematik</div>
-                            <div class="about_section">
-                            <span style="display:none;">undefined</span>
-                            </div>
-                            <div class="bottom_section">
-                                <span style="display:inline-block;"><i class="fas fa-code"></i>&nbsp; Java</span>
-                                <span><i class="fas fa-star"></i>&nbsp; 0</span>
-                                <span><i class="fas fa-code-branch"></i>&nbsp; 0</span>
-                            </div>
-                        </section>
-                        </a>
-                        <a href="https://github.com/ahmetkorkmaz3/sql-helper" target="_blank">
-                        <section>
-                            <div class="section_title">sql-helper</div>
-                            <div class="about_section">
-                            <span style="display:none;">undefined</span>
-                            </div>
-                            <div class="bottom_section">
-                                <span style="display:inline-block;"><i class="fas fa-code"></i>&nbsp; C#</span>
-                                <span><i class="fas fa-star"></i>&nbsp; 0</span>
-                                <span><i class="fas fa-code-branch"></i>&nbsp; 0</span>
-                            </div>
-                        </section>
-                        </a>
-                        <a href="https://github.com/ahmetkorkmaz3/Possibility" target="_blank">
-                        <section>
-                            <div class="section_title">Possibility</div>
-                            <div class="about_section">
-                            <span style="display:none;">undefined</span>
-                            </div>
-                            <div class="bottom_section">
-                                <span style="display:inline-block;"><i class="fas fa-code"></i>&nbsp; Python</span>
-                                <span><i class="fas fa-star"></i>&nbsp; 0</span>
-                                <span><i class="fas fa-code-branch"></i>&nbsp; 0</span>
-                            </div>
-                        </section>
-                        </a>
-                        <a href="https://github.com/ktu-yazilim-kulubu/hello-world-ahmet" target="_blank">
-                        <section>
-                            <div class="section_title">hello-world-ahmet</div>
-                            <div class="about_section">
-                            <span style="display:none;">undefined</span>
-                            </div>
-                            <div class="bottom_section">
-                                <span style="display:none;"><i class="fas fa-code"></i>&nbsp; null</span>
-                                <span><i class="fas fa-star"></i>&nbsp; 0</span>
-                                <span><i class="fas fa-code-branch"></i>&nbsp; 1</span>
-                            </div>
-                        </section>
-                        </a>
-                        <a href="https://github.com/ahmetkorkmaz3/Programlamaya-Giris" target="_blank">
-                        <section>
-                            <div class="section_title">Programlamaya-Giris</div>
-                            <div class="about_section">
-                            <span style="display:none;">undefined</span>
-                            </div>
-                            <div class="bottom_section">
-                                <span style="display:inline-block;"><i class="fas fa-code"></i>&nbsp; C</span>
-                                <span><i class="fas fa-star"></i>&nbsp; 1</span>
-                                <span><i class="fas fa-code-branch"></i>&nbsp; 0</span>
-                            </div>
-                        </section>
-                        </a></div>
-      </div>
-      <div id="forks" style="display: block;">
-        <h1>Forks.</h1>
-        <div class="projects" id="forks_section">
-                        <a href="https://github.com/ahmetkorkmaz3/Hacktoberfest2020" target="_blank">
-                        <section>
-                            <div class="section_title">Hacktoberfest2020</div>
-                            <div class="about_section">
-                            <span style="display:block;">Make your first Pull Request and earn a free tee from GitHub! </span>
-                            </div>
-                            <div class="bottom_section">
-                                <span style="display:none;"><i class="fas fa-code"></i>&nbsp; null</span>
-                                <span><i class="fas fa-star"></i>&nbsp; 0</span>
-                                <span><i class="fas fa-code-branch"></i>&nbsp; 0</span>
-                            </div>
-                        </section>
-                        </a>
-                        <a href="https://github.com/ahmetkorkmaz3/private-chat-app-with-laravel-vuejs-pusher" target="_blank">
-                        <section>
-                            <div class="section_title">private-chat-app-with-laravel-vuejs-pusher</div>
-                            <div class="about_section">
-                            <span style="display:block;">Create an Awesome one to one chat app with Laravel vuejs and pusher</span>
-                            </div>
-                            <div class="bottom_section">
-                                <span style="display:none;"><i class="fas fa-code"></i>&nbsp; null</span>
-                                <span><i class="fas fa-star"></i>&nbsp; 0</span>
-                                <span><i class="fas fa-code-branch"></i>&nbsp; 0</span>
-                            </div>
-                        </section>
-                        </a>
-                        <a href="https://github.com/ahmetkorkmaz3/ArtificialIntelligenceNeuron" target="_blank">
-                        <section>
-                            <div class="section_title">ArtificialIntelligenceNeuron</div>
-                            <div class="about_section">
-                            <span style="display:none;">undefined</span>
-                            </div>
-                            <div class="bottom_section">
-                                <span style="display:none;"><i class="fas fa-code"></i>&nbsp; null</span>
-                                <span><i class="fas fa-star"></i>&nbsp; 0</span>
-                                <span><i class="fas fa-code-branch"></i>&nbsp; 0</span>
-                            </div>
-                        </section>
-                        </a>
-                        <a href="https://github.com/ahmetkorkmaz3/Yapay-Zeka-Ders-Notlari" target="_blank">
-                        <section>
-                            <div class="section_title">Yapay-Zeka-Ders-Notlari</div>
-                            <div class="about_section">
-                            <span style="display:none;">undefined</span>
-                            </div>
-                            <div class="bottom_section">
-                                <span style="display:none;"><i class="fas fa-code"></i>&nbsp; null</span>
-                                <span><i class="fas fa-star"></i>&nbsp; 0</span>
-                                <span><i class="fas fa-code-branch"></i>&nbsp; 0</span>
-                            </div>
-                        </section>
-                        </a>
-                        <a href="https://github.com/ahmetkorkmaz3/stajyerco" target="_blank">
-                        <section>
-                            <div class="section_title">stajyerco</div>
-                            <div class="about_section">
-                            <span style="display:block;">küllerinden doğan anka kuşu</span>
-                            </div>
-                            <div class="bottom_section">
-                                <span style="display:none;"><i class="fas fa-code"></i>&nbsp; null</span>
-                                <span><i class="fas fa-star"></i>&nbsp; 0</span>
-                                <span><i class="fas fa-code-branch"></i>&nbsp; 0</span>
-                            </div>
-                        </section>
-                        </a>
-                        <a href="https://github.com/ahmetkorkmaz3/react-turkce-kaynak" target="_blank">
-                        <section>
-                            <div class="section_title">react-turkce-kaynak</div>
-                            <div class="about_section">
-                            <span style="display:block;">React.js öğrenmek için kullanabileceğiniz ücretsiz Türkçe kaynak.</span>
-                            </div>
-                            <div class="bottom_section">
-                                <span style="display:none;"><i class="fas fa-code"></i>&nbsp; null</span>
-                                <span><i class="fas fa-star"></i>&nbsp; 0</span>
-                                <span><i class="fas fa-code-branch"></i>&nbsp; 0</span>
-                            </div>
-                        </section>
-                        </a>
-                        <a href="https://github.com/ahmetkorkmaz3/guvercin" target="_blank">
-                        <section>
-                            <div class="section_title">guvercin</div>
-                            <div class="about_section">
-                            <span style="display:block;">REST Api Client Application</span>
-                            </div>
-                            <div class="bottom_section">
-                                <span style="display:inline-block;"><i class="fas fa-code"></i>&nbsp; JavaScript</span>
-                                <span><i class="fas fa-star"></i>&nbsp; 1</span>
-                                <span><i class="fas fa-code-branch"></i>&nbsp; 0</span>
-                            </div>
-                        </section>
-                        </a>
-                        <a href="https://github.com/ahmetkorkmaz3/AES-256" target="_blank">
-                        <section>
-                            <div class="section_title">AES-256</div>
-                            <div class="about_section">
-                            <span style="display:block;">A java implementation of the AES cipher</span>
-                            </div>
-                            <div class="bottom_section">
-                                <span style="display:none;"><i class="fas fa-code"></i>&nbsp; null</span>
-                                <span><i class="fas fa-star"></i>&nbsp; 0</span>
-                                <span><i class="fas fa-code-branch"></i>&nbsp; 0</span>
-                            </div>
-                        </section>
-                        </a>
-                        <a href="https://github.com/ahmetkorkmaz3/BigInteger.js" target="_blank">
-                        <section>
-                            <div class="section_title">BigInteger.js</div>
-                            <div class="about_section">
-                            <span style="display:block;">An arbitrary length integer library for Javascript</span>
-                            </div>
-                            <div class="bottom_section">
-                                <span style="display:none;"><i class="fas fa-code"></i>&nbsp; null</span>
-                                <span><i class="fas fa-star"></i>&nbsp; 0</span>
-                                <span><i class="fas fa-code-branch"></i>&nbsp; 0</span>
-                            </div>
-                        </section>
-                        </a>
-                        <a href="https://github.com/ahmetkorkmaz3/chatapp" target="_blank">
-                        <section>
-                            <div class="section_title">chatapp</div>
-                            <div class="about_section">
-                            <span style="display:none;">undefined</span>
-                            </div>
-                            <div class="bottom_section">
-                                <span style="display:inline-block;"><i class="fas fa-code"></i>&nbsp; JavaScript</span>
-                                <span><i class="fas fa-star"></i>&nbsp; 0</span>
-                                <span><i class="fas fa-code-branch"></i>&nbsp; 0</span>
-                            </div>
-                        </section>
-                        </a>
-                        <a href="https://github.com/ahmetkorkmaz3/jquery-story-viewer" target="_blank">
-                        <section>
-                            <div class="section_title">jquery-story-viewer</div>
-                            <div class="about_section">
-                            <span style="display:none;">undefined</span>
-                            </div>
-                            <div class="bottom_section">
-                                <span style="display:inline-block;"><i class="fas fa-code"></i>&nbsp; JavaScript</span>
-                                <span><i class="fas fa-star"></i>&nbsp; 0</span>
-                                <span><i class="fas fa-code-branch"></i>&nbsp; 0</span>
-                            </div>
-                        </section>
-                        </a>
-                        <a href="https://github.com/ahmetkorkmaz3/algorithm-lessons" target="_blank">
-                        <section>
-                            <div class="section_title">algorithm-lessons</div>
-                            <div class="about_section">
-                            <span style="display:block;">Programlamanın Temeli Algoritma Dersleri</span>
-                            </div>
-                            <div class="bottom_section">
-                                <span style="display:none;"><i class="fas fa-code"></i>&nbsp; null</span>
-                                <span><i class="fas fa-star"></i>&nbsp; 0</span>
-                                <span><i class="fas fa-code-branch"></i>&nbsp; 0</span>
-                            </div>
-                        </section>
-                        </a>
-                        <a href="https://github.com/ahmetkorkmaz3/first-contributions" target="_blank">
-                        <section>
-                            <div class="section_title">first-contributions</div>
-                            <div class="about_section">
-                            <span style="display:block;">🚀✨ Help beginners to contribute to open source projects</span>
-                            </div>
-                            <div class="bottom_section">
-                                <span style="display:none;"><i class="fas fa-code"></i>&nbsp; null</span>
-                                <span><i class="fas fa-star"></i>&nbsp; 0</span>
-                                <span><i class="fas fa-code-branch"></i>&nbsp; 0</span>
-                            </div>
-                        </section>
-                        </a>
-                        <a href="https://github.com/ahmetkorkmaz3/html-begin" target="_blank">
-                        <section>
-                            <div class="section_title">html-begin</div>
-                            <div class="about_section">
-                            <span style="display:none;">undefined</span>
-                            </div>
-                            <div class="bottom_section">
-                                <span style="display:inline-block;"><i class="fas fa-code"></i>&nbsp; HTML</span>
-                                <span><i class="fas fa-star"></i>&nbsp; 0</span>
-                                <span><i class="fas fa-code-branch"></i>&nbsp; 0</span>
-                            </div>
-                        </section>
-                        </a>
-                        <a href="https://github.com/ahmetkorkmaz3/nginx-rtmp-module" target="_blank">
-                        <section>
-                            <div class="section_title">nginx-rtmp-module</div>
-                            <div class="about_section">
-                            <span style="display:block;">NGINX-based Media Streaming Server</span>
-                            </div>
-                            <div class="bottom_section">
-                                <span style="display:inline-block;"><i class="fas fa-code"></i>&nbsp; C</span>
-                                <span><i class="fas fa-star"></i>&nbsp; 0</span>
-                                <span><i class="fas fa-code-branch"></i>&nbsp; 0</span>
-                            </div>
-                        </section>
-                        </a>
-                        <a href="https://github.com/ahmetkorkmaz3/sherlock" target="_blank">
-                        <section>
-                            <div class="section_title">sherlock</div>
-                            <div class="about_section">
-                            <span style="display:block;">🔎 Find usernames across social networks</span>
-                            </div>
-                            <div class="bottom_section">
-                                <span style="display:inline-block;"><i class="fas fa-code"></i>&nbsp; Python</span>
-                                <span><i class="fas fa-star"></i>&nbsp; 1</span>
-                                <span><i class="fas fa-code-branch"></i>&nbsp; 0</span>
-                            </div>
-                        </section>
-                        </a>
-                        <a href="https://github.com/ahmetkorkmaz3/prototurk.com" target="_blank">
-                        <section>
-                            <div class="section_title">prototurk.com</div>
-                            <div class="about_section">
-                            <span style="display:block;">Prototürk'ün API dökümanları yer alır. Herkes katkı sağlayabilir, bilginizi özgür bırakın.</span>
-                            </div>
-                            <div class="bottom_section">
-                                <span style="display:inline-block;"><i class="fas fa-code"></i>&nbsp; HTML</span>
-                                <span><i class="fas fa-star"></i>&nbsp; 0</span>
-                                <span><i class="fas fa-code-branch"></i>&nbsp; 0</span>
-                            </div>
-                        </section>
-                        </a>
-                        <a href="https://github.com/ahmetkorkmaz3/docker-nginx-flask-redis-postgres" target="_blank">
-                        <section>
-                            <div class="section_title">docker-nginx-flask-redis-postgres</div>
-                            <div class="about_section">
-                            <span style="display:block;">Docker Compose example for NGINX proxy -&gt; Flask -&gt; {redis,postgres}</span>
-                            </div>
-                            <div class="bottom_section">
-                                <span style="display:inline-block;"><i class="fas fa-code"></i>&nbsp; Python</span>
-                                <span><i class="fas fa-star"></i>&nbsp; 0</span>
-                                <span><i class="fas fa-code-branch"></i>&nbsp; 0</span>
-                            </div>
-                        </section>
-                        </a>
-                        <a href="https://github.com/ahmetkorkmaz3/vue" target="_blank">
-                        <section>
-                            <div class="section_title">vue</div>
-                            <div class="about_section">
-                            <span style="display:block;">🖖 Vue.js is a progressive, incrementally-adoptable JavaScript framework for building UI on the web.</span>
-                            </div>
-                            <div class="bottom_section">
-                                <span style="display:inline-block;"><i class="fas fa-code"></i>&nbsp; JavaScript</span>
-                                <span><i class="fas fa-star"></i>&nbsp; 0</span>
-                                <span><i class="fas fa-code-branch"></i>&nbsp; 0</span>
-                            </div>
-                        </section>
-                        </a>
-                        <a href="https://github.com/ahmetkorkmaz3/kefir" target="_blank">
-                        <section>
-                            <div class="section_title">kefir</div>
-                            <div class="about_section">
-                            <span style="display:block;">Kefir is a natural language processing kit for Turkic languages</span>
-                            </div>
-                            <div class="bottom_section">
-                                <span style="display:inline-block;"><i class="fas fa-code"></i>&nbsp; Python</span>
-                                <span><i class="fas fa-star"></i>&nbsp; 0</span>
-                                <span><i class="fas fa-code-branch"></i>&nbsp; 0</span>
-                            </div>
-                        </section>
-                        </a>
-                        <a href="https://github.com/ahmetkorkmaz3/django-blog-app" target="_blank">
-                        <section>
-                            <div class="section_title">django-blog-app</div>
-                            <div class="about_section">
-                            <span style="display:block;">Django Blog App</span>
-                            </div>
-                            <div class="bottom_section">
-                                <span style="display:inline-block;"><i class="fas fa-code"></i>&nbsp; JavaScript</span>
-                                <span><i class="fas fa-star"></i>&nbsp; 0</span>
-                                <span><i class="fas fa-code-branch"></i>&nbsp; 0</span>
-                            </div>
-                        </section>
-                        </a>
-                        <a href="https://github.com/ahmetkorkmaz3/algorithm-archive" target="_blank">
-                        <section>
-                            <div class="section_title">algorithm-archive</div>
-                            <div class="about_section">
-                            <span style="display:block;">A collaborative book on algorithms</span>
-                            </div>
-                            <div class="bottom_section">
-                                <span style="display:inline-block;"><i class="fas fa-code"></i>&nbsp; C</span>
-                                <span><i class="fas fa-star"></i>&nbsp; 0</span>
-                                <span><i class="fas fa-code-branch"></i>&nbsp; 0</span>
-                            </div>
-                        </section>
-                        </a>
-                        <a href="https://github.com/ahmetkorkmaz3/deductive-reasoning" target="_blank">
-                        <section>
-                            <div class="section_title">deductive-reasoning</div>
-                            <div class="about_section">
-                            <span style="display:block;">A tool for deductive reasoning</span>
-                            </div>
-                            <div class="bottom_section">
-                                <span style="display:inline-block;"><i class="fas fa-code"></i>&nbsp; Python</span>
-                                <span><i class="fas fa-star"></i>&nbsp; 0</span>
-                                <span><i class="fas fa-code-branch"></i>&nbsp; 0</span>
-                            </div>
-                        </section>
-                        </a>
-                        <a href="https://github.com/ahmetkorkmaz3/Django-LYK2018" target="_blank">
-                        <section>
-                            <div class="section_title">Django-LYK2018</div>
-                            <div class="about_section">
-                            <span style="display:none;">undefined</span>
-                            </div>
-                            <div class="bottom_section">
-                                <span style="display:inline-block;"><i class="fas fa-code"></i>&nbsp; Python</span>
-                                <span><i class="fas fa-star"></i>&nbsp; 0</span>
-                                <span><i class="fas fa-code-branch"></i>&nbsp; 0</span>
-                            </div>
-                        </section>
-                        </a>
-                        <a href="https://github.com/ahmetkorkmaz3/elifin-okuzu" target="_blank">
-                        <section>
-                            <div class="section_title">elifin-okuzu</div>
-                            <div class="about_section">
-                            <span style="display:block;"> Etymological dictionary software</span>
-                            </div>
-                            <div class="bottom_section">
-                                <span style="display:inline-block;"><i class="fas fa-code"></i>&nbsp; Python</span>
-                                <span><i class="fas fa-star"></i>&nbsp; 0</span>
-                                <span><i class="fas fa-code-branch"></i>&nbsp; 0</span>
-                            </div>
-                        </section>
-                        </a></div>
-      </div>
-      <div id="blog_section">
-        <h1>Blog.</h1>
-        <div id="blogs"></div>
-      </div>
-      <div id="footer">
-        <a href="https://github.com/imfunniee" target="_blank">made on earth by a human</a>
-      </div>
-    </div>
-    <script type="text/javascript">
-      setTimeout(function() {
-        document.getElementById("loading").classList.add("animated");
-        document.getElementById("loading").classList.add("fadeOut");
-        setTimeout(function() {
-          document.getElementById("loading").classList.remove("animated");
-          document.getElementById("loading").classList.remove("fadeOut");
-          document.getElementById("loading").style.display = "none";
-        }, 800);
-      }, 1500);
-      $.getJSON("blog.json", function(blog) {
-        blog = blog || [];
-        if (blog.length == 0) {
-          return (document.getElementById("blog_section").style.display =
-            "none");
-        }
-        for (var i = 0; i < blog.length; i++) {
-          $("#blogs").append(`
-            <a href="./blog/${blog[i].url_title}/" target="_blank">
-                <section>
-                    <img src="./blog/${blog[i].url_title}/${blog[i].top_image}">
-                    <div class="blog_container">
-                        <div class="section_title">${blog[i].title}</div>
-                        <div class="about_section">
-                            ${blog[i].sub_title}
-                        </div>
-                    </div>
-                </section>
-            </a>
-            `);
-        }
-      }).fail(function() {
-        return (document.getElementById("blog_section").style.display = "none");
-      });
-    </script>
+  </footer>
 
-    <script>
-      const magicProjectsGrid = new MagicGrid({
-        container: "#work_section",
-        animate: false,
-        gutter: 30, // default gutter size
-        static: true,
-        useMin: false,
-        maxColumns: 2,
-        useTransform: true
-      });
-
-      const magicForksGrid = new MagicGrid({
-        container: "#forks_section",
-        animate: false,
-        gutter: 30, // default gutter size
-        static: true,
-        useMin: false,
-        maxColumns: 2,
-        useTransform: true
-      });
-
-      $("document").ready(() => {
-        magicProjectsGrid.listen();
-        magicForksGrid.listen();
-      });
-    </script>
-  
-
-</body></html>
+  <script src="assets/js/main.js"></script>
+</body>
+</html>
