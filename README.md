@@ -73,10 +73,10 @@ Başkasının çektiği bir fotoğrafı kullanırsan `credit` alanını doldur. 
 
 ```yaml
       credit:
-        author: Joshua Kehn
+        author: Yazar Adı
         license: CC BY-SA 4.0
         license_url: https://creativecommons.org/licenses/by-sa/4.0/
-        source: https://commons.wikimedia.org/wiki/File:Magic_Trackpad_2.jpg
+        source: https://commons.wikimedia.org/wiki/File:Ornek.jpg
         similar: true      # isteğe bağlı: fotoğraf benzer bir modeli gösteriyorsa
 ```
 
