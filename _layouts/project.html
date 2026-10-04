@@ -1,0 +1,23 @@
+---
+layout: default
+---
+<article class="detail">
+  <a class="back" href="{{ '/#projects' | relative_url }}">← All projects</a>
+  <header class="detail-head">
+    <p class="detail-meta">{{ page.year }}</p>
+    <h1>{{ page.title | escape }}</h1>
+    <p class="detail-summary">{{ page.summary }}</p>
+    {% if page.stars %}{% include stars.html repo=page.repo count=page.stars %}{% endif %}
+    <ul class="chips">{% for item in page.stack %}<li>{{ item }}</li>{% endfor %}</ul>
+    {% if page.repo or page.demo %}
+    <p class="actions">
+      {% if page.repo %}<a class="btn" href="https://github.com/{{ page.repo }}" target="_blank" rel="noopener">Source on GitHub ↗</a>{% endif %}
+      {% if page.demo %}<a class="btn" href="{{ page.demo }}" target="_blank" rel="noopener">Live demo ↗</a>{% endif %}
+    </p>
+    {% endif %}
+  </header>
+  {% if page.cover %}<img class="detail-cover" src="{{ page.cover | relative_url }}" alt="{{ page.title | escape }} screenshot">{% endif %}
+  <div class="prose">
+    {{ content }}
+  </div>
+</article>

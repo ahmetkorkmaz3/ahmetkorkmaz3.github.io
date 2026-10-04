@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  {% include head.html %}
+</head>
+<body>
+  <a class="skip" href="#content">Skip to content</a>
+
+  {% include topbar.html %}
+
+  <main class="wide-main" id="content">
+    {{ content }}
+
+    {% include footnote.html %}
+  </main>
+
+  <script src="{{ '/assets/js/main.js' | relative_url }}"></script>
+</body>
+</html>
