@@ -1,5 +1,5 @@
 ---
-title: "Example print: 3DBenchy"
+title: 'Example print: "3DBenchy" & Co'
 date: 2026-09-12
 kind: print
 images:

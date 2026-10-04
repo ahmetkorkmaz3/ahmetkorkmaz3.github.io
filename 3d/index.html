@@ -23,7 +23,7 @@ description: 3D prints and models by Ahmet Korkmaz.
     <li class="card" data-kind="{{ item.kind }}">
       <a href="{{ item.url | relative_url }}">
         {% if cover %}<img src="{{ cover | relative_url }}" alt="" loading="lazy">{% else %}<span class="card-empty" aria-hidden="true"></span>{% endif %}
-        <h2>{{ item.title }}</h2>
+        <h2>{{ item.title | escape }}</h2>
         <p class="card-meta"><time datetime="{{ item.date | date_to_xmlschema }}">{{ item.date | date: '%b %Y' }}</time> · {% include kind-label.html kind=item.kind %}</p>
       </a>
     </li>

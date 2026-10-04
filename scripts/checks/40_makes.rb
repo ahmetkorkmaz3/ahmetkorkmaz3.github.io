@@ -19,7 +19,12 @@ if gallery
 end
 
 print_page = '/3d/example-print/'
-expect_match(print_page, %r{<h1[^>]*>Example print: 3DBenchy</h1>}, 'print heading')
+expect_match(print_page, %r{<h1[^>]*>Example print: &quot;3DBenchy&quot; &amp; Co</h1>}, 'print heading, escaped')
+expect_match(print_page, %r{<title>Example print: &quot;3DBenchy&quot; &amp; Co · Ahmet Korkmaz</title>}, 'page title, escaped')
+expect_match(print_page, %r{property="og:title" content="Example print: &quot;3DBenchy&quot; &amp; Co · Ahmet Korkmaz"}, 'og:title, escaped')
+expect_match(print_page, %r{alt="Example print: &quot;3DBenchy&quot; &amp; Co, photo 1"}, 'photo alt, escaped')
+expect_match('/3d/', %r{<h2>Example print: &quot;3DBenchy&quot; &amp; Co</h2>}, 'card title, escaped')
+expect_match(print_page, %r{name="description" content="This is an example print\.}, 'description from the first paragraph')
 expect_match(print_page, %r{<a class="back" href="/3d/">}, 'back link')
 expect_match(print_page, %r{<dt>Printer</dt>\s*<dd>Bambu Lab A1</dd>}, 'printer fact')
 expect_match(print_page, %r{<dt>Designer</dt>\s*<dd>CreativeTools</dd>}, 'designer fact')
