@@ -28,3 +28,6 @@ expect_match(print_page, %r{<img src="/assets/3d/example-print/2\.svg"}, 'second
 expect_match(print_page, %r{property="og:image" content="https://ahmetkorkmaz3.github.io/assets/3d/example-print/1\.svg"}, 'first photo as og:image')
 expect_no_match(print_page, /model-viewer/, '3D viewer without model_file')
 expect_no_match('/3d/example-model/', %r{<dt>Printer</dt>}, 'empty facts')
+
+# The footer must not touch the end of a page article.
+expect_match('/assets/css/style.css', /\.detail \{ margin-bottom: 64px; \}/, 'space between an article and the footer')

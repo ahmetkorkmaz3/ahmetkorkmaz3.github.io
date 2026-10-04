@@ -10,3 +10,6 @@ expect_match(model_page, %r{href="/assets/3d/example-model/model\.glb" download>
 
 glb = File.join(SITE, 'assets/3d/example-model/model.glb')
 FAILURES << 'model.glb: not a binary glTF file' unless File.file?(glb) && File.binread(glb, 4) == 'glTF'
+
+# model-viewer sets height: 150px on :host. height: auto lets aspect-ratio set the height.
+expect_match('/assets/css/style.css', /\.viewer model-viewer \{[^}]*height: auto;/, 'viewer height from aspect-ratio')
