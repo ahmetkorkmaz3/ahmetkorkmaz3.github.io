@@ -1,4 +1,3 @@
-{% if page.url == '/' %}{% assign home = '' %}{% else %}{% assign home = '/' | relative_url %}{% endif %}
 <header class="sidebar">
   <div>
     {% if page.url == '/' %}
@@ -10,13 +9,7 @@
     <p class="tagline">Full stack developer. I build web applications and APIs that stay reliable and easy to change.</p>
 
     <nav class="nav" aria-label="Site">
-      <ul>
-        <li><a href="{{ home }}#about">About</a></li>
-        <li><a href="{{ home }}#experience">Experience</a></li>
-        <li><a{% if page.nav == 'projects' %} class="active"{% endif %} href="{{ home }}#projects">Projects</a></li>
-        <li><a{% if page.nav == '3d' %} class="active"{% endif %} href="{{ '/3d/' | relative_url }}">3D</a></li>
-        <li><a{% if page.nav == 'uses' %} class="active"{% endif %} href="{{ '/uses/' | relative_url }}">Uses</a></li>
-      </ul>
+      {% include nav-links.html %}
     </nav>
   </div>
 

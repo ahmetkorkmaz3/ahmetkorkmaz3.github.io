@@ -6,15 +6,13 @@
 <body>
   <a class="skip" href="#content">Skip to content</a>
 
-  <div class="layout">
-    {% include sidebar.html %}
+  {% include topbar.html %}
 
-    <main class="content" id="content">
-      {{ content }}
+  <main class="wide-main" id="content">
+    {{ content }}
 
-      {% include footnote.html %}
-    </main>
-  </div>
+    {% include footnote.html %}
+  </main>
 
   <script src="{{ '/assets/js/main.js' | relative_url }}"></script>
 </body>

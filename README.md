@@ -54,6 +54,21 @@ Notlar (Markdown).
 2. File → Export → glTF 2.0 seç. Format: glTF Binary (.glb).
 3. Dosyayı 10 MB altında tut.
 
+## Uses sayfasına cihaz ekle
+
+1. `_data/uses.yml` dosyasını aç.
+2. Doğru bölümün `items` listesine bir öğe ekle:
+
+```yaml
+    - name: Dell S2721HS
+      kind: Monitor        # Laptop, Keyboard, Trackpad, Monitor, 3D printer: ikonu seçer
+      note: 27", 1080p     # isteğe bağlı
+      image: /assets/uses/dell-s2721hs.jpg   # isteğe bağlı, ikonun yerine görünür
+      link: https://...    # isteğe bağlı, kart bu sayfaya gider
+```
+
+Yeni bir bölüm için `- section: <ad>` ve altında `items:` ekle.
+
 ## Yerel önizleme
 
 1. Ruby 3.3 kur: `brew install ruby@3.3`

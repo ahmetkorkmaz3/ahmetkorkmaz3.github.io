@@ -1,0 +1,17 @@
+# Devices on the /uses/ page. Each item is one card.
+# Fields: name, kind (Laptop, Keyboard, Trackpad, Monitor, 3D printer; sets the icon),
+# note (optional), image (optional, replaces the icon), link (optional).
+- section: Desk
+  items:
+    - name: MacBook Air M2
+      kind: Laptop
+    - name: Magic Keyboard with Touch ID
+      kind: Keyboard
+    - name: Magic Trackpad
+      kind: Trackpad
+    - name: Dell S2721HS
+      kind: Monitor
+- section: 3D Printing
+  items:
+    - name: Creality Ender 3 S1
+      kind: 3D printer
