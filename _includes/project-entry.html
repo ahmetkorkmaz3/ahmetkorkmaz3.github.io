@@ -1,0 +1,9 @@
+<li class="entry">
+  <span class="when">{{ include.project.year }}</span>
+  <div>
+    <h3><a href="{{ include.project.url | relative_url }}">{{ include.project.title }}<span class="arrow">→</span></a></h3>
+    <p>{{ include.project.summary }}</p>
+    {% if include.project.stars %}{% include stars.html repo=include.project.repo count=include.project.stars %}{% endif %}
+    <ul class="chips">{% for item in include.project.stack %}<li>{{ item }}</li>{% endfor %}</ul>
+  </div>
+</li>

@@ -67,49 +67,8 @@ og_description: Senior full stack developer at Moneo. Laravel, Symfony, React an
 <section id="projects" aria-label="Projects">
   <h2 class="section-title">Projects</h2>
   <ul class="entries">
-    <li class="entry">
-      <span class="when">2021</span>
-      <div>
-        <h3><a href="https://github.com/prodtestapp/prodtest-web" target="_blank" rel="noopener">Prodtest<span class="arrow">↗</span></a></h3>
-        <p>A no-code end-to-end API testing tool. Second place in the Teknasyon hackathon.</p>
-        <span class="stars"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="m12 2 3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2Z"/></svg><span data-repo="prodtestapp/prodtest-web">32</span></span>
-        <ul class="chips"><li>Laravel</li><li>Vue</li></ul>
-      </div>
-    </li>
-    <li class="entry">
-      <span class="when">2022</span>
-      <div>
-        <h3><a href="https://contra-psi.vercel.app" target="_blank" rel="noopener">Contra<span class="arrow">↗</span></a></h3>
-        <p>Merges GitHub and GitLab contribution calendars into a single view. A Nuxt frontend with a separate Express API.</p>
-        <span class="stars"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="m12 2 3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2Z"/></svg><span data-repo="ahmetkorkmaz3/contra">27</span></span>
-        <ul class="chips"><li>Vue</li><li>Nuxt</li><li>Express</li></ul>
-      </div>
-    </li>
-    <li class="entry">
-      <span class="when">2022</span>
-      <div>
-        <h3><a href="https://github.com/craze-app/craze" target="_blank" rel="noopener">Craze<span class="arrow">↗</span></a></h3>
-        <p>An open source desktop app that brings useful developer tools together in one place, on any platform.</p>
-        <ul class="chips"><li>TypeScript</li><li>Desktop</li></ul>
-      </div>
-    </li>
-    <li class="entry">
-      <span class="when">2020</span>
-      <div>
-        <h3><a href="https://ahmetkorkmaz3.github.io/clipaste/" target="_blank" rel="noopener">Clipaste<span class="arrow">↗</span></a></h3>
-        <p>A cross-platform clipboard manager for macOS, Windows and Linux. Keeps the history of copied text.</p>
-        <span class="stars"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="m12 2 3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2Z"/></svg><span data-repo="ahmetkorkmaz3/clipaste">17</span></span>
-        <ul class="chips"><li>Electron</li><li>JavaScript</li></ul>
-      </div>
-    </li>
-    <li class="entry">
-      <span class="when">2020</span>
-      <div>
-        <h3><a href="https://github.com/ahmetkorkmaz3/guvercin" target="_blank" rel="noopener">Güvercin<span class="arrow">↗</span></a></h3>
-        <p>A desktop REST API client to send requests and examine the responses.</p>
-        <ul class="chips"><li>Electron</li><li>JavaScript</li></ul>
-      </div>
-    </li>
+    {% assign projects = site.projects | sort: 'order' %}
+    {% for project in projects %}{% include project-entry.html project=project %}{% endfor %}
   </ul>
   <a class="more" href="https://github.com/ahmetkorkmaz3?tab=repositories" target="_blank" rel="noopener">All projects on GitHub <span>→</span></a>
 </section>

@@ -8,6 +8,17 @@ markdown: kramdown
 liquid:
   error_mode: strict
   strict_filters: true
+collections:
+  projects:
+    output: true
+    permalink: /projects/:name/
+defaults:
+  - scope:
+      path: ""
+      type: projects
+    values:
+      layout: project
+      nav: projects
 exclude:
   - README.md
   - Gemfile
