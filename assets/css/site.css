@@ -169,24 +169,6 @@ section:last-of-type { margin-bottom: 64px; }
 .detail-cover { display: block; width: 100%; height: auto; margin-bottom: 40px; border-radius: 10px; border: 1px solid var(--line); }
 
 /* ---------- 3D ---------- */
-.filters { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 24px; }
-.filters[hidden] { display: none; }
-.filters button {
-  font: inherit; font-size: 13px; font-weight: 500; padding: 6px 12px; border-radius: 999px;
-  border: 1px solid var(--line); background: none; color: var(--muted); cursor: pointer;
-}
-.filters button:hover { color: var(--text); }
-.filters button[aria-pressed="true"] { background: var(--accent-soft); border-color: transparent; color: var(--accent); }
-.cards { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px; }
-.card[hidden] { display: none; }
-.card a { display: block; }
-.card img, .card-empty {
-  display: block; width: 100%; aspect-ratio: 4 / 3; object-fit: cover;
-  border-radius: 10px; border: 1px solid var(--line); background: var(--surface);
-}
-.card h2 { margin-top: 12px; font-size: 16px; font-weight: 500; color: var(--text); line-height: 1.4; }
-.card a:hover h2 { color: var(--accent); }
-.card-meta { margin-top: 4px; font-size: 13px; color: var(--muted); }
 .tag { font-size: 11px; font-weight: 600; letter-spacing: .06em; text-transform: uppercase; }
 .tag-model { color: var(--accent); }
 /* Photos are transparent WebP files (scripts/prepare_photos.sh). The tile gives the background. */
@@ -292,7 +274,6 @@ a.use-inner:hover .use-name { color: var(--accent); }
   .wide-main { padding-top: 40px; }
   .wide-head h1 { font-size: 32px; }
   .use-grid { grid-template-columns: 1fr; }
-  .cards { grid-template-columns: 1fr; }
   .gallery { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .layout { padding: 0 16px; }
   .section-title { margin: 0 -16px 12px; padding: 14px 16px; }

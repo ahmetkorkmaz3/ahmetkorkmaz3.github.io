@@ -18,7 +18,7 @@ out=$1
 shift
 mkdir -p "$out"
 
-# Light theme --surface in assets/css/style.css
+# Light theme --surface in assets/css/site.css
 og_background='#f6f7f9'
 
 tool_dir=${TMPDIR:-/tmp}/prepare-photos

@@ -1,32 +1,27 @@
 ---
-layout: default
+layout: wide
 title: 3D
 nav: 3d
 description: 3D prints and models by Ahmet Korkmaz.
+summary: Things I print on my 3D printer, and models I design myself.
 ---
-<article class="detail">
-  <header class="detail-head">
-    <h1>3D</h1>
-    <p class="detail-summary">Things I print on my 3D printer, and models I design myself.</p>
-  </header>
+<header class="wide-head">
+  <h1>{{ page.title | escape }}</h1>
+  <p class="detail-summary">{{ page.summary }}</p>
+</header>
 
-  <div class="filters" hidden role="group" aria-label="Filter by kind">
-    <button type="button" data-filter="all" aria-pressed="true">All</button>
-    <button type="button" data-filter="print" aria-pressed="false">Prints</button>
-    <button type="button" data-filter="model" aria-pressed="false">My models</button>
-  </div>
-
-  {% assign items = site.makes | sort: 'date' | reverse %}
-  <ul class="cards">
-    {% for item in items %}
-    {% assign cover = item.cover | default: item.images.first %}
-    <li class="card" data-kind="{{ item.kind }}">
-      <a href="{{ item.url | relative_url }}">
-        {% if cover %}<img src="{{ cover | relative_url }}" alt="" loading="lazy">{% else %}<span class="card-empty" aria-hidden="true"></span>{% endif %}
-        <h2>{{ item.title | escape }}</h2>
-        <p class="card-meta"><time datetime="{{ item.date | date_to_xmlschema }}">{{ item.date | date: '%b %Y' }}</time> · {% include kind-label.html kind=item.kind %}</p>
-      </a>
-    </li>
-    {% endfor %}
-  </ul>
-</article>
+{% assign items = site.makes | sort: 'date' | reverse %}
+<div class="use-section">
+<ul class="use-grid">
+  {% for item in items %}
+  {% assign cover = item.cover | default: item.images.first %}
+  <li class="use-card" data-kind="{{ item.kind }}">
+    <a class="use-inner" href="{{ item.url | relative_url }}">
+      <div class="use-media">{% if cover %}<img src="{{ cover | relative_url }}" alt="" loading="lazy">{% endif %}</div>
+      <h2 class="use-name">{{ item.title | escape }}</h2>
+      <p class="use-kind"><time datetime="{{ item.date | date_to_xmlschema }}">{{ item.date | date: '%b %Y' }}</time> · {% include kind-label.html kind=item.kind %}</p>
+    </a>
+  </li>
+  {% endfor %}
+</ul>
+</div>
