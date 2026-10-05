@@ -36,4 +36,8 @@ end
 expect_match('/', /class="sidebar"/, 'sidebar on home')
 expect_match('/', %r{href="/uses/"}, 'Uses link on home')
 expect_no_match('/', %r{class="active" href="/uses/"}, 'Uses link active on home')
-expect_no_match('/assets/css/style.css', /\.nav \{ display: none; \}/, 'menu hidden on small screens')
+expect_no_match('/assets/css/site.css', /\.nav \{ display: none; \}/, 'menu hidden on small screens')
+
+# The github-pages gem adds the Primer theme, and Primer writes /assets/css/style.css.
+# Our styles use another name, so a rebuild cannot replace them.
+expect_match('/', %r{<link rel="stylesheet" href="/assets/css/site\.css">}, 'site stylesheet link')
