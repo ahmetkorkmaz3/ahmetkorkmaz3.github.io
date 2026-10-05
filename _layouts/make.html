@@ -9,7 +9,11 @@ layout: default
     <h1>{{ page.title | escape }}</h1>
   </header>
 
-  {% if page.model_file %}{% include model-viewer.html src=page.model_file poster=cover alt=page.title %}{% endif %}
+  {% if page.model_file %}{% include model-viewer.html src=page.model_file download=page.download orbit=page.camera_orbit poster=cover alt=page.title %}{% endif %}
+
+  {% if page.video %}
+  <video class="clip" src="{{ page.video | relative_url }}"{% if page.video_poster %} poster="{{ page.video_poster | relative_url }}"{% endif %} autoplay muted loop playsinline aria-label="Video of {{ page.title | escape }}"></video>
+  {% endif %}
 
   {% if page.images %}
   <div class="gallery">

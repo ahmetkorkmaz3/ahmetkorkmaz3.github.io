@@ -200,6 +200,10 @@ section:last-of-type { margin-bottom: 64px; }
   border-radius: 10px; border: 1px solid var(--line); background: var(--surface);
 }
 .viewer .more { margin-top: 12px; }
+.clip {
+  display: block; width: 100%; max-width: 360px; height: auto; margin: 0 auto 40px;
+  border-radius: 10px; border: 1px solid var(--line); background: var(--surface);
+}
 
 /* ---------- Wide pages (Uses) ---------- */
 .topbar-inner, .wide-main { max-width: 1160px; margin: 0 auto; padding-left: 48px; padding-right: 48px; }

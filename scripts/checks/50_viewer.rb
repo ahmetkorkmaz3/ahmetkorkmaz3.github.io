@@ -14,3 +14,13 @@ FAILURES << 'model.glb: not a binary glTF file' unless File.file?(glb) && File.b
 
 # model-viewer sets height: 150px on :host. height: auto lets aspect-ratio set the height.
 expect_match('/assets/css/style.css', /\.viewer model-viewer \{[^}]*height: auto;/, 'viewer height from aspect-ratio')
+
+contra_page = '/3d/contra-heatmap/'
+expect_match(contra_page, %r{<model-viewer[^>]*src="/assets/3d/contra-heatmap/model\.glb"}, 'Contra viewer with the GLB file')
+expect_match(contra_page, %r{href="/assets/3d/contra-heatmap/contra-ahmetkorkmaz\.stl" download>Download \.stl</a>}, 'STL download link')
+expect_match(contra_page, %r{<video class="clip" src="/assets/3d/contra-heatmap/video\.mp4" poster="/assets/3d/contra-heatmap/video-poster\.jpg" autoplay muted loop playsinline}, 'looping muted video')
+expect_match(contra_page, %r{<dt>Printer</dt>\s*<dd>Creality Ender 3 S1</dd>}, 'Contra printer fact')
+expect_no_match(model_page, /<video/, 'no video without a video field')
+%w[model.glb contra-ahmetkorkmaz.stl video.mp4].each do |name|
+  FAILURES << "contra-heatmap/#{name}: missing" unless File.file?(File.join(SITE, 'assets/3d/contra-heatmap', name))
+end
