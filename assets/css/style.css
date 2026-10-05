@@ -189,8 +189,33 @@ section:last-of-type { margin-bottom: 64px; }
 .card-meta { margin-top: 4px; font-size: 13px; color: var(--muted); }
 .tag { font-size: 11px; font-weight: 600; letter-spacing: .06em; text-transform: uppercase; }
 .tag-model { color: var(--accent); }
-.gallery { display: flex; flex-direction: column; gap: 16px; margin-bottom: 40px; }
-.gallery img { display: block; width: 100%; height: auto; border-radius: 10px; border: 1px solid var(--line); }
+/* Photos are transparent WebP files (scripts/prepare_photos.sh). The tile gives the background. */
+.gallery { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; margin: 0 0 40px; padding: 0; list-style: none; }
+.tile {
+  position: relative; display: block; aspect-ratio: 4 / 3; overflow: hidden;
+  border-radius: 10px; border: 1px solid var(--line); background: var(--surface);
+}
+.tile img, .tile video { display: block; width: 100%; height: 100%; object-fit: cover; transition: transform .2s; }
+.tile:hover img, .tile:hover video { transform: scale(1.04); }
+.tile:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+.tile-video::after {
+  content: "▶"; position: absolute; left: 8px; bottom: 8px; padding: 2px 8px; border-radius: 999px;
+  font-size: 11px; color: #fff; background: rgba(15, 23, 42, .6);
+}
+.lightbox {
+  width: min(960px, calc(100vw - 32px)); max-height: calc(100vh - 32px); padding: 0;
+  border: 1px solid var(--line); border-radius: 12px; background: var(--surface); color: var(--text);
+}
+.lightbox::backdrop { background: rgba(2, 6, 23, .75); }
+.lightbox figure { margin: 0; }
+.lightbox img, .lightbox video { display: block; width: 100%; max-height: calc(100vh - 100px); object-fit: contain; }
+.lightbox-bar { display: flex; align-items: center; gap: 8px; padding: 8px 12px; border-top: 1px solid var(--line); font-size: 13px; color: var(--muted); }
+.lightbox-bar span { margin-right: auto; }
+.lightbox button {
+  font: inherit; font-size: 13px; padding: 4px 12px; border-radius: 999px; cursor: pointer;
+  border: 1px solid var(--line); background: var(--bg); color: var(--text);
+}
+.lightbox button:hover { border-color: var(--accent); color: var(--accent); }
 .facts { display: grid; grid-template-columns: max-content 1fr; gap: 8px 24px; margin-bottom: 32px; font-size: 15px; }
 .facts dt { color: var(--muted); }
 .facts dd { margin: 0; color: var(--text); }
@@ -200,10 +225,6 @@ section:last-of-type { margin-bottom: 64px; }
   border-radius: 10px; border: 1px solid var(--line); background: var(--surface);
 }
 .viewer .more { margin-top: 12px; }
-.clip {
-  display: block; width: 100%; max-width: 360px; height: auto; margin: 0 auto 40px;
-  border-radius: 10px; border: 1px solid var(--line); background: var(--surface);
-}
 
 /* ---------- Wide pages (Uses) ---------- */
 .topbar-inner, .wide-main { max-width: 1160px; margin: 0 auto; padding-left: 48px; padding-right: 48px; }
@@ -272,6 +293,7 @@ a.use-inner:hover .use-name { color: var(--accent); }
   .wide-head h1 { font-size: 32px; }
   .use-grid { grid-template-columns: 1fr; }
   .cards { grid-template-columns: 1fr; }
+  .gallery { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .layout { padding: 0 16px; }
   .section-title { margin: 0 -16px 12px; padding: 14px 16px; }
   .entry { grid-template-columns: 1fr; gap: 6px; padding: 16px; margin: 0 -16px; }

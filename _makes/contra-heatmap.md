@@ -7,12 +7,13 @@ download: /assets/3d/contra-heatmap/contra-ahmetkorkmaz.stl
 camera_orbit: 0deg 65deg auto
 video: /assets/3d/contra-heatmap/video.mp4
 video_poster: /assets/3d/contra-heatmap/video-poster.jpg
+og_image: /assets/3d/contra-heatmap/og.jpg
 images:
-  - /assets/3d/contra-heatmap/1.jpg
-  - /assets/3d/contra-heatmap/2.jpg
-  - /assets/3d/contra-heatmap/3.jpg
-  - /assets/3d/contra-heatmap/4.jpg
-  - /assets/3d/contra-heatmap/5.jpg
+  - /assets/3d/contra-heatmap/1.webp
+  - /assets/3d/contra-heatmap/2.webp
+  - /assets/3d/contra-heatmap/3.webp
+  - /assets/3d/contra-heatmap/4.webp
+  - /assets/3d/contra-heatmap/5.webp
 printer: Creality Ender 3 S1
 filament: PLA, blue
 designer: Ahmet Korkmaz, with Contra
