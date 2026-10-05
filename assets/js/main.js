@@ -35,6 +35,59 @@
     });
   }
 
+  // 3D page lightbox. Without JavaScript (or without <dialog>) the tiles stay plain links to the files.
+  var tiles = document.querySelectorAll('.gallery .tile');
+  if (tiles.length && window.HTMLDialogElement) {
+    var box = document.createElement('dialog');
+    box.className = 'lightbox';
+    box.setAttribute('aria-label', 'Gallery');
+    box.innerHTML = '<figure></figure><div class="lightbox-bar"><span></span>' +
+      '<button type="button" data-step="-1" aria-label="Previous">←</button>' +
+      '<button type="button" data-step="1" aria-label="Next">→</button>' +
+      '<button type="button" data-close>Close</button></div>';
+    document.body.appendChild(box);
+    var figure = box.querySelector('figure');
+    var counter = box.querySelector('.lightbox-bar span');
+    var current = 0;
+
+    var show = function (index) {
+      current = (index + tiles.length) % tiles.length;
+      var tile = tiles[current];
+      var media;
+      if (tile.getAttribute('data-type') === 'video') {
+        media = document.createElement('video');
+        media.src = tile.getAttribute('href');
+        media.controls = media.autoplay = media.loop = media.muted = media.playsInline = true;
+      } else {
+        media = document.createElement('img');
+        media.src = tile.getAttribute('href');
+        media.alt = tile.querySelector('img').alt;
+      }
+      figure.replaceChildren(media);
+      counter.textContent = (current + 1) + ' / ' + tiles.length;
+    };
+
+    tiles.forEach(function (tile, index) {
+      tile.addEventListener('click', function (event) {
+        event.preventDefault();
+        show(index);
+        box.showModal();
+      });
+    });
+    box.addEventListener('click', function (event) {
+      var step = event.target.closest('[data-step]');
+      if (step) show(current + Number(step.getAttribute('data-step')));
+      // A click on the backdrop has the dialog itself as the target.
+      else if (event.target === box || event.target.closest('[data-close]')) box.close();
+    });
+    box.addEventListener('keydown', function (event) {
+      if (event.key === 'ArrowLeft') show(current - 1);
+      if (event.key === 'ArrowRight') show(current + 1);
+    });
+    // Stop the video when the lightbox closes.
+    box.addEventListener('close', function () { figure.replaceChildren(); });
+  }
+
   // Live GitHub star counts for "owner/repo" values (the static numbers in the HTML stay as a fallback)
   if (window.fetch) {
     document.querySelectorAll('[data-repo]').forEach(function (el) {

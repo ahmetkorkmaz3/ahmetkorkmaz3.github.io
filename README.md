@@ -24,8 +24,10 @@ Detay metni (Markdown).
 
 ## Yeni baskı veya model ekle
 
-1. Fotoğrafları `assets/3d/<slug>/` klasörüne koy.
-2. Fotoğrafları küçült: `sips -Z 1600 assets/3d/<slug>/*.jpg`
+1. Fotoğrafları site stiline çevir. Betik arka planı siler ve fotoğrafları sırayla `1.webp`, `2.webp` ... olarak yazar:
+   `scripts/prepare_photos.sh assets/3d/<slug> ~/Downloads/foto1.HEIC ~/Downloads/foto2.HEIC`
+   İlk fotoğraf kapak olur. Betik ayrıca link önizlemesi için `og.jpg` yazar. macOS 14 ve ImageMagick 7 gerekir.
+2. Modelin tamamı kadrajda olsun. Kadrajın dışına taşan bir uç, kesimde düz görünür.
 3. `_makes/<slug>.md` dosyası oluştur. URL `/3d/<slug>/` olur.
 
 ```yaml
@@ -33,26 +35,40 @@ Detay metni (Markdown).
 title: Cable Organizer
 date: 2026-09-12
 kind: model          # print (başkasının modeli) veya model (kendi tasarımın)
+og_image: /assets/3d/cable-organizer/og.jpg
 images:
-  - /assets/3d/cable-organizer/1.jpg
+  - /assets/3d/cable-organizer/1.webp
 printer: Bambu Lab A1     # isteğe bağlı
 filament: PLA, black      # isteğe bağlı
 designer: Ahmet Korkmaz   # isteğe bağlı
 link: https://makerworld.com/...   # isteğe bağlı
 model_file: /assets/3d/cable-organizer/model.glb   # isteğe bağlı, 3D görüntüleyici açar
+download: /assets/3d/cable-organizer/model.stl     # isteğe bağlı, indirme linki (yoksa GLB)
+camera_orbit: 0deg 65deg auto                      # isteğe bağlı, görüntüleyicinin ilk açısı
+video: /assets/3d/cable-organizer/video.mp4        # isteğe bağlı, galerinin ilk karesi
+video_poster: /assets/3d/cable-organizer/video-poster.jpg
 ---
 Notlar (Markdown).
 ```
 
 `kind` sadece `print` veya `model` olabilir. Test bu kuralı kontrol eder.
 
+### Videoyu küçült
+
+Galeri videoyu sessiz ve döngülü oynatır.
+
+```sh
+ffmpeg -i IN.MOV -map 0:v:0 -an -map_metadata -1 -vf "scale=720:-2,fps=30,format=yuv420p" \
+  -c:v libx264 -preset slow -crf 26 -movflags +faststart assets/3d/<slug>/video.mp4
+ffmpeg -ss 0.5 -i assets/3d/<slug>/video.mp4 -frames:v 1 -q:v 4 assets/3d/<slug>/video-poster.jpg
+```
+
 ### STL dosyasını GLB yap
 
-3D görüntüleyici GLB dosyası okur.
+3D görüntüleyici GLB dosyası okur:
+`python3 scripts/stl_to_glb.py model.stl assets/3d/<slug>/model.glb`
 
-1. Blender aç. File → Import → STL ile dosyayı al.
-2. File → Export → glTF 2.0 seç. Format: glTF Binary (.glb).
-3. Dosyayı 10 MB altında tut.
+Dosyayı 10 MB altında tut.
 
 ## Uses sayfasına cihaz ekle
 

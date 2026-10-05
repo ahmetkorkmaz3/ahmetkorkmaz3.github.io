@@ -9,12 +9,17 @@ layout: default
     <h1>{{ page.title | escape }}</h1>
   </header>
 
-  {% if page.model_file %}{% include model-viewer.html src=page.model_file poster=cover alt=page.title %}{% endif %}
+  {% if page.model_file %}{% include model-viewer.html src=page.model_file download=page.download orbit=page.camera_orbit poster=cover alt=page.title %}{% endif %}
 
-  {% if page.images %}
-  <div class="gallery">
-    {% for image in page.images %}<img src="{{ image | relative_url }}" alt="{{ page.title | escape }}, photo {{ forloop.index }}" loading="lazy">{% endfor %}
-  </div>
+  {% if page.video or page.images %}
+  {% comment %} Each tile links to the full file. main.js opens the links in a lightbox. {% endcomment %}
+  <ul class="gallery">
+    {% if page.video %}<li><a class="tile tile-video" href="{{ page.video | relative_url }}" data-type="video" aria-label="Play the video of {{ page.title | escape }}">
+      <video src="{{ page.video | relative_url }}"{% if page.video_poster %} poster="{{ page.video_poster | relative_url }}"{% endif %} autoplay muted loop playsinline aria-hidden="true"></video>
+    </a></li>{% endif %}
+    {% for image in page.images %}<li><a class="tile" href="{{ image | relative_url }}" data-type="image"><img src="{{ image | relative_url }}" alt="{{ page.title | escape }}, photo {{ forloop.index }}" loading="lazy"></a></li>
+    {% endfor %}
+  </ul>
   {% endif %}
 
   {% if page.printer or page.filament or page.designer %}

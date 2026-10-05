@@ -1,5 +1,7 @@
 <script type="module" src="https://cdn.jsdelivr.net/npm/@google/model-viewer@4.0.0/dist/model-viewer.min.js"></script>
 <div class="viewer">
-  <model-viewer src="{{ include.src | relative_url }}"{% if include.poster %} poster="{{ include.poster | relative_url }}"{% endif %} alt="3D model of {{ include.alt | escape }}" camera-controls auto-rotate></model-viewer>
-  <a class="more" href="{{ include.src | relative_url }}" download>Download .glb</a>
+  <model-viewer src="{{ include.src | relative_url }}"{% if include.poster %} poster="{{ include.poster | relative_url }}"{% endif %} alt="3D model of {{ include.alt | escape }}"{% if include.orbit %} camera-orbit="{{ include.orbit }}"{% endif %} shadow-intensity="1" camera-controls auto-rotate></model-viewer>
+  {% assign file = include.download | default: include.src %}
+  {% assign file_type = file | split: '.' | last | downcase %}
+  <a class="more" href="{{ file | relative_url }}" download>Download .{{ file_type }}</a>
 </div>
