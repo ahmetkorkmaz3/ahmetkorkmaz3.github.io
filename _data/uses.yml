@@ -1,18 +1,45 @@
 # Devices on the /uses/ page. Each item is one card.
-# Fields: name, kind (Laptop, Keyboard, Trackpad, Monitor, 3D printer; sets the icon),
+# Fields: name, kind (Laptop, Keyboard, Trackpad, Monitor, Monitor arm, Stand, Tablet,
+# Phone, Charger, Earbuds, Lamp, 3D printer; sets the icon),
 # note (optional), image (optional, replaces the icon), link (optional),
 # credit (only for a photo you did not take: author, license, license_url, source;
-# similar: true when the photo shows a similar model, not the exact one).
+# similar: true when the photo shows a similar model, not the exact one),
+# spot (optional: x and y of the device on the desk photo, in percent from the top left).
 - section: Desk
   items:
     - name: MacBook Air M2
       kind: Laptop
-    - name: Magic Keyboard with Touch ID
-      kind: Keyboard
-    - name: Magic Trackpad
-      kind: Trackpad
+      spot: { x: 17, y: 64 }
+    - name: Laptop stand
+      kind: Stand
+      spot: { x: 45, y: 77 }
     - name: Dell S2721HS
       kind: Monitor
+      spot: { x: 44, y: 24 }
+    - name: Monitor arm
+      kind: Monitor arm
+      spot: { x: 35, y: 57 }
+    - name: Magic Keyboard with Touch ID
+      kind: Keyboard
+      spot: { x: 78, y: 84 }
+    - name: Magic Trackpad
+      kind: Trackpad
+      spot: { x: 86, y: 75 }
+    - name: iPad
+      kind: Tablet
+      spot: { x: 56, y: 64 }
+    - name: iPhone
+      kind: Phone
+      spot: { x: 65, y: 57 }
+    - name: MagSafe charger
+      kind: Charger
+      spot: { x: 66, y: 71 }
+    - name: AirPods
+      kind: Earbuds
+      spot: { x: 73, y: 73 }
+    - name: Desk lamp
+      kind: Lamp
+      spot: { x: 64, y: 31 }
 - section: 3D Printing
   items:
     - name: Creality Ender 3 S1

@@ -70,6 +70,42 @@
     box.addEventListener('close', function () { figure.replaceChildren(); });
   }
 
+  // Uses page desk photo. A spot and its card highlight each other. Without JavaScript the tips still show on hover and focus.
+  var spots = document.querySelectorAll('.desk-spot');
+  if (spots.length) {
+    var canHover = window.matchMedia('(hover: hover)').matches;
+    var closeAll = function (except) {
+      spots.forEach(function (s) { if (s !== except) s.classList.remove('is-open'); });
+    };
+    spots.forEach(function (spot) {
+      var card = document.getElementById(spot.getAttribute('data-card'));
+      if (!card) return;
+      var link = function (on) { card.classList.toggle('is-linked', on); };
+      spot.addEventListener('mouseenter', function () { link(true); });
+      spot.addEventListener('mouseleave', function () { link(false); });
+      spot.addEventListener('focus', function () { link(true); });
+      spot.addEventListener('blur', function () { link(false); spot.classList.remove('is-open'); });
+      card.addEventListener('mouseenter', function () { spot.classList.add('is-linked'); });
+      card.addEventListener('mouseleave', function () { spot.classList.remove('is-linked'); });
+      // A mouse click goes to the card. On a touch screen the first tap shows the tip and the second tap goes to the card.
+      spot.addEventListener('click', function () {
+        if (!canHover && !spot.classList.contains('is-open')) {
+          closeAll(spot);
+          spot.classList.add('is-open');
+          return;
+        }
+        spot.classList.remove('is-open');
+        card.scrollIntoView({ block: 'center' });
+      });
+    });
+    document.addEventListener('click', function (event) {
+      if (!event.target.closest('.desk-spot')) closeAll();
+    });
+    document.addEventListener('keydown', function (event) {
+      if (event.key === 'Escape') closeAll();
+    });
+  }
+
   // Live GitHub star counts for "owner/repo" values (the static numbers in the HTML stay as a fallback)
   if (window.fetch) {
     document.querySelectorAll('[data-repo]').forEach(function (el) {
