@@ -1,10 +1,11 @@
 ---
 title: MagSafe Charger Stand
-date: 2026-10-07
+date: 2023-09-23
 kind: print
 icon: charger
 link: https://www.printables.com/model/582465-magsafe-charger-stand-for-iphone-standby-mode
 printer: Creality Ender 3 S1
+filament: PLA, white
 designer: ThomasD on Printables (CC BY-NC-SA)
 ---
 
