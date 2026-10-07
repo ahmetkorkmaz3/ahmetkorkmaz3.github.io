@@ -201,6 +201,7 @@ section:last-of-type { margin-bottom: 64px; }
 .facts { display: grid; grid-template-columns: max-content 1fr; gap: 8px 24px; margin-bottom: 32px; font-size: 15px; }
 .facts dt { color: var(--muted); }
 .facts dd { margin: 0; color: var(--text); }
+.detail > .actions { margin: 0 0 32px; }
 .viewer { margin-bottom: 40px; }
 .viewer model-viewer {
   display: block; width: 100%; height: auto; aspect-ratio: 4 / 3;
@@ -267,20 +268,29 @@ section:last-of-type { margin-bottom: 64px; }
   margin-bottom: 20px; font-size: 12px; font-weight: 600; letter-spacing: .12em;
   text-transform: uppercase; color: var(--text);
 }
-.use-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; }
+.use-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 20px; }
 .use-card { border: 1px solid var(--line); border-radius: 12px; transition: border-color .2s; }
 .use-card:hover { border-color: color-mix(in srgb, var(--accent) 40%, var(--line)); }
-.use-inner { display: flex; align-items: center; gap: 14px; height: 100%; padding: 14px; }
+.use-inner { display: block; padding: 16px; }
 .use-media {
-  display: grid; place-items: center; flex: none; width: 44px; height: 44px;
-  border-radius: 8px; background: var(--surface); color: var(--muted);
+  position: relative; display: grid; place-items: center; aspect-ratio: 4 / 3; margin-bottom: 16px;
+  overflow: hidden; border-radius: 8px; background: var(--surface); color: var(--muted);
 }
-.use-icon { width: 24px; height: 24px; }
-.use-text { min-width: 0; }
-.use-name { font-size: 15px; font-weight: 500; color: var(--text); line-height: 1.4; }
+.use-media img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain; }
+.use-icon { width: 56px; height: 56px; }
+.use-name { font-size: 16px; font-weight: 500; color: var(--text); line-height: 1.4; }
 a.use-inner:hover .use-name { color: var(--accent); }
 .use-kind { margin-top: 2px; font-size: 13px; color: var(--muted); }
-.use-note { margin-top: 6px; font-size: 14px; }
+.use-note { margin-top: 8px; font-size: 15px; }
+/* Uses page: a small icon next to the text, because the desk photo shows the devices. */
+.use-grid.compact { gap: 12px; }
+.compact .use-inner { display: flex; align-items: center; gap: 14px; height: 100%; padding: 14px; }
+.compact .use-media { flex: none; width: 44px; height: 44px; aspect-ratio: auto; margin: 0; }
+.compact .use-icon { width: 24px; height: 24px; }
+.compact .use-text { min-width: 0; }
+.compact .use-name { font-size: 15px; }
+.compact a.use-inner .use-name::after { content: " →"; color: var(--muted); }
+.compact a.use-inner:hover .use-name::after { color: inherit; }
 
 /* ---------- Responsive ---------- */
 @media (max-width: 1023px) {

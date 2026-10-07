@@ -17,7 +17,7 @@ summary: Things I print on my 3D printer, and models I design myself.
   {% assign cover = item.cover | default: item.images.first %}
   <li class="use-card" data-kind="{{ item.kind }}">
     <a class="use-inner" href="{{ item.url | relative_url }}">
-      <div class="use-media">{% if cover %}<img src="{{ cover | relative_url }}" alt="" loading="lazy">{% endif %}</div>
+      <div class="use-media">{% if cover %}<img src="{{ cover | relative_url }}" alt="" loading="lazy">{% else %}{% include uses-icon.html kind=item.icon %}{% endif %}</div>
       <h2 class="use-name">{{ item.title | escape }}</h2>
       <p class="use-kind"><time datetime="{{ item.date | date_to_xmlschema }}">{{ item.date | date: '%b %Y' }}</time> · {% include kind-label.html kind=item.kind %}</p>
     </a>

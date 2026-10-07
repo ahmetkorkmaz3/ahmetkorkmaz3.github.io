@@ -24,15 +24,15 @@ summary: The hardware and tools I use every day.
 {% assign section_id = group.section | slugify | prepend: 'uses-' %}
 <section class="use-section" aria-labelledby="{{ section_id }}">
   <h2 class="use-section-title" id="{{ section_id }}">{{ group.section | escape }}</h2>
-  <ul class="use-grid">
+  <ul class="use-grid compact">
     {% for item in group.items %}
     <li class="use-card" id="{{ item.name | slugify | prepend: 'use-' }}">
-      {% if item.link %}<a class="use-inner" href="{{ item.link }}" target="_blank" rel="noopener">{% else %}<div class="use-inner">{% endif %}
+      {% if item.link %}<a class="use-inner" href="{{ item.link | relative_url }}"{% if item.link contains '://' %} target="_blank" rel="noopener"{% endif %}>{% else %}<div class="use-inner">{% endif %}
         <div class="use-media">{% include uses-icon.html kind=item.kind %}</div>
         <div class="use-text">
           <h3 class="use-name">{{ item.name | escape }}</h3>
-          {% unless item.kind == item.name %}<p class="use-kind">{{ item.kind | escape }}</p>{% endunless %}
-          {% if item.note %}<p class="use-note">{{ item.note | escape }}</p>{% endif %}
+          {% capture kind_line %}{% unless item.kind == item.name %}{{ item.kind | escape }}{% endunless %}{% if item.note %}{% unless item.kind == item.name %} · {% endunless %}{{ item.note | escape }}{% endif %}{% endcapture %}
+          {% if kind_line != '' %}<p class="use-kind">{{ kind_line }}</p>{% endif %}
         </div>
       {% if item.link %}</a>{% else %}</div>{% endif %}
     </li>
