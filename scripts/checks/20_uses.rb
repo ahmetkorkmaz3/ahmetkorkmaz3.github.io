@@ -16,21 +16,29 @@ expect_match(uses, %r{href="/3d/"}, '3D link in the top bar')
 %w[Desk 3D\ Printing].each do |section|
   expect_match(uses, %r{<h2[^>]*>#{section}</h2>}, "#{section} section")
 end
-['MacBook Air M2', 'Magic Keyboard with Touch ID', 'Magic Trackpad', 'Dell S2721HS', 'Creality Ender 3 S1'].each do |name|
-  expect_match(uses, %r{<h3 class="use-name">#{name}</h3>}, "#{name} card")
+require 'yaml'
+items = YAML.load_file(File.expand_path('../../_data/uses.yml', __dir__)).flat_map { |group| group['items'] }
+items.each do |item|
+  name = Regexp.escape(item['name'].gsub('"', '&quot;'))
+  expect_match(uses, %r{<h3 class="use-name">#{name}</h3>}, "#{item['name']} card")
 end
 page = read_page(uses)
 if page
-  FAILURES << "#{uses}: expected 5 device cards" unless page.scan('class="use-card"').size == 5
-  images = page.scan(%r{<img src="/assets/uses/[^"]+"}).size
-  icons = page.scan('class="use-icon"').size
-  FAILURES << "#{uses}: expected an icon on each card without an image" unless images + icons == 5
-  # A photo credit needs a source link and a license link (CC BY and CC BY-SA ask for both).
-  page.scan(%r{<p class="use-credit">.*?</p>}m).each do |credit|
-    FAILURES << "#{uses}: credit without a source link: #{credit[0, 80]}" unless credit.match?(/Photo: <a href="https?:/)
-    FAILURES << "#{uses}: credit without a license link: #{credit[0, 80]}" unless credit.match?(%r{href="https://creativecommons\.org/licenses/})
-  end
+  cards = page.scan('class="use-card"').size
+  FAILURES << "#{uses}: expected #{items.size} device cards, found #{cards}" unless cards == items.size
+  FAILURES << "#{uses}: expected an icon on each card" unless page.scan('class="use-icon"').size == items.size
+
+  # The desk photo has one spot for each device with a spot field, and each spot points at a card.
+  expect_match(uses, %r{<figure class="desk">\s*<img src="/img/uses/desk-2400\.jpg"}, 'desk photo')
+  spots = page.scan(/class="desk-spot"[^>]*data-card="([^"]+)"/).flatten
+  expected_spots = items.count { |item| item['spot'] }
+  FAILURES << "#{uses}: expected #{expected_spots} desk spots, found #{spots.size}" unless spots.size == expected_spots
+  card_ids = page.scan(/class="use-card" id="([^"]+)"/).flatten
+  (spots - card_ids).each { |id| FAILURES << "#{uses}: desk spot without a card: #{id}" }
 end
+# A printed stand links to its 3D page in the same tab.
+expect_match(uses, %r{<a class="use-inner" href="/3d/macbook-stand/">}, 'MacBook stand card links to its 3D page')
+expect_match(uses, %r{<a class="use-inner" href="/3d/magsafe-charger-stand/">}, 'MagSafe stand card links to its 3D page')
 
 # The other pages keep the sidebar layout.
 expect_match('/', /class="sidebar"/, 'sidebar on home')

@@ -42,6 +42,7 @@ printer: Bambu Lab A1     # isteğe bağlı
 filament: PLA, black      # isteğe bağlı
 designer: Ahmet Korkmaz   # isteğe bağlı
 link: https://makerworld.com/...   # isteğe bağlı
+icon: stand        # isteğe bağlı, fotoğraf yoksa kartta bu ikon görünür (_includes/uses-icon.html)
 model_file: /assets/3d/cable-organizer/model.glb   # isteğe bağlı, 3D görüntüleyici açar
 download: /assets/3d/cable-organizer/model.stl     # isteğe bağlı, indirme linki (yoksa GLB)
 camera_orbit: 0deg 65deg auto                      # isteğe bağlı, görüntüleyicinin ilk açısı
