@@ -32,5 +32,15 @@ expect_no_match(contra_page, /class="sidebar"/, 'sidebar on the detail page')
 expect_match(contra_page, %r{<a class="back" href="/3d/">}, 'back link')
 expect_match(contra_page, %r{<dt>Designer</dt>\s*<dd>Ahmet Korkmaz, with Contra</dd>}, 'designer fact')
 
+# The printed stands from the Uses page.
+{ 'macbook-stand' => ['MacBook Stand', 'PLA, black', '612620'],
+  'magsafe-charger-stand' => ['MagSafe Charger Stand', 'PLA, white', '582465'] }.each do |slug, (title, filament, model)|
+  page = "/3d/#{slug}/"
+  expect_match('/3d/', %r{<img src="/assets/3d/#{slug}/1\.webp"}, "#{title} card photo")
+  expect_match(page, %r{<h1[^>]*>#{title}</h1>}, "#{title} heading")
+  expect_match(page, %r{<dt>Filament</dt>\s*<dd>#{filament}</dd>}, "#{title} filament fact")
+  expect_match(page, %r{<a class="btn" href="https://www\.printables\.com/model/#{model}-}, "#{title} Printables link")
+end
+
 # The footer must not touch the end of a page article.
 expect_match('/assets/css/site.css', /\.detail \{ margin-bottom: 64px; \}/, 'space between an article and the footer')
