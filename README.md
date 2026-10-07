@@ -26,6 +26,7 @@ Detay metni (Markdown).
 
 1. Fotoğrafları site stiline çevir. Betik arka planı siler ve fotoğrafları sırayla `1.webp`, `2.webp` ... olarak yazar:
    `scripts/prepare_photos.sh assets/3d/<slug> ~/Downloads/foto1.HEIC ~/Downloads/foto2.HEIC`
+   Arka planı silmek istemezsen `--keep-background` ekle. Fotoğraf kendi oranını ve arka planını korur.
    İlk fotoğraf kapak olur. Betik ayrıca link önizlemesi için `og.jpg` yazar. macOS 14 ve ImageMagick 7 gerekir.
 2. Modelin tamamı kadrajda olsun. Kadrajın dışına taşan bir uç, kesimde düz görünür.
 3. `_makes/<slug>.md` dosyası oluştur. URL `/3d/<slug>/` olur.
