@@ -1,9 +1,7 @@
 # Devices on the /uses/ page. Each item is one card.
 # Fields: name, kind (Laptop, Keyboard, Trackpad, Monitor, Monitor arm, Stand, Tablet,
 # Phone, Charger, Earbuds, Lamp, 3D printer; sets the icon),
-# note (optional), image (optional, replaces the icon), link (optional),
-# credit (only for a photo you did not take: author, license, license_url, source;
-# similar: true when the photo shows a similar model, not the exact one),
+# note (optional), link (optional),
 # spot (optional: x and y of the device on the desk photo, in percent from the top left).
 - section: Desk
   items:
