@@ -201,6 +201,7 @@ section:last-of-type { margin-bottom: 64px; }
 .facts { display: grid; grid-template-columns: max-content 1fr; gap: 8px 24px; margin-bottom: 32px; font-size: 15px; }
 .facts dt { color: var(--muted); }
 .facts dd { margin: 0; color: var(--text); }
+.detail > .actions { margin: 0 0 32px; }
 .viewer { margin-bottom: 40px; }
 .viewer model-viewer {
   display: block; width: 100%; height: auto; aspect-ratio: 4 / 3;
@@ -226,6 +227,42 @@ section:last-of-type { margin-bottom: 64px; }
 .wide-main { padding-top: 64px; padding-bottom: 64px; }
 .wide-head { margin-bottom: 56px; }
 .wide-head h1 { font-size: 40px; font-weight: 700; color: var(--text); letter-spacing: -.03em; line-height: 1.1; }
+/* Desk photo with a spot on each device. The tip shows on hover, on keyboard focus, or after a tap (.is-open). */
+.desk { position: relative; margin: 0 0 64px; border-radius: 12px; background: #000; }
+.desk img { display: block; width: 100%; height: auto; border-radius: inherit; transition: filter .3s; }
+.desk:has(.desk-spot:hover, .desk-spot:focus-visible, .desk-spot.is-open) img { filter: brightness(.7); }
+.desk-spot {
+  position: absolute; left: var(--x); top: var(--y); width: 32px; height: 32px; margin: -16px 0 0 -16px;
+  padding: 0; border: 0; background: none; cursor: pointer; -webkit-tap-highlight-color: transparent;
+}
+.desk-spot::before, .desk-spot::after {
+  content: ""; position: absolute; inset: 9px; border-radius: 50%; background: #fff;
+}
+.desk-spot::before { box-shadow: 0 0 0 4px rgba(255, 255, 255, .25), 0 2px 8px rgba(0, 0, 0, .5); }
+.desk-spot::after { animation: desk-pulse 2.4s ease-out infinite; }
+.desk-spot:hover::before, .desk-spot:focus-visible::before, .desk-spot.is-open::before, .desk-spot.is-linked::before {
+  background: var(--accent); box-shadow: 0 0 0 4px color-mix(in srgb, var(--accent) 35%, transparent), 0 2px 8px rgba(0, 0, 0, .5);
+}
+.desk-spot:focus-visible { outline: 2px solid #fff; outline-offset: 0; border-radius: 50%; }
+@keyframes desk-pulse { from { opacity: .6; transform: scale(1); } to { opacity: 0; transform: scale(2.6); } }
+.desk-tip {
+  position: absolute; bottom: calc(100% + 6px); left: 50%; z-index: 1; width: max-content; max-width: 220px;
+  padding: 8px 12px; border-radius: 8px; background: rgba(15, 23, 42, .92); backdrop-filter: blur(6px);
+  color: #e2e8f0; font-size: 13px; line-height: 1.4; text-align: left; white-space: normal;
+  opacity: 0; transform: translate(-50%, 4px); pointer-events: none; transition: opacity .2s, transform .2s;
+}
+.desk-tip strong { display: block; color: #fff; font-size: 14px; font-weight: 600; }
+.desk-tip span { color: #94a3b8; }
+.desk-tip em { display: block; margin-top: 4px; font-style: normal; }
+.desk-spot[data-below] .desk-tip { top: calc(100% + 6px); bottom: auto; }
+.desk-spot[data-align="start"] .desk-tip { left: 0; transform: translate(0, 4px); }
+.desk-spot[data-align="end"] .desk-tip { left: auto; right: 0; transform: translate(0, 4px); }
+.desk-spot:hover .desk-tip, .desk-spot:focus-visible .desk-tip, .desk-spot.is-open .desk-tip, .desk-spot.is-linked .desk-tip {
+  opacity: 1; transform: translate(-50%, 0);
+}
+.desk-spot[data-align]:is(:hover, :focus-visible, .is-open, .is-linked) .desk-tip { transform: none; }
+.desk-spot:is(:hover, :focus-visible, .is-open, .is-linked) { z-index: 2; }
+.use-card.is-linked { border-color: var(--accent); }
 .use-section { margin-bottom: 64px; }
 .use-section-title {
   margin-bottom: 20px; font-size: 12px; font-weight: 600; letter-spacing: .12em;
@@ -245,9 +282,15 @@ section:last-of-type { margin-bottom: 64px; }
 a.use-inner:hover .use-name { color: var(--accent); }
 .use-kind { margin-top: 2px; font-size: 13px; color: var(--muted); }
 .use-note { margin-top: 8px; font-size: 15px; }
-.use-credit { padding: 0 16px 14px; font-size: 11px; line-height: 1.5; color: var(--muted); }
-.use-credit a { text-decoration: underline; text-decoration-color: var(--line); text-underline-offset: 2px; }
-.use-credit a:hover { color: var(--text); }
+/* Uses page: a small icon next to the text, because the desk photo shows the devices. */
+.use-grid.compact { gap: 12px; }
+.compact .use-inner { display: flex; align-items: center; gap: 14px; height: 100%; padding: 14px; }
+.compact .use-media { flex: none; width: 44px; height: 44px; aspect-ratio: auto; margin: 0; }
+.compact .use-icon { width: 24px; height: 24px; }
+.compact .use-text { min-width: 0; }
+.compact .use-name { font-size: 15px; }
+.compact a.use-inner .use-name::after { content: " →"; color: var(--muted); }
+.compact a.use-inner:hover .use-name::after { color: inherit; }
 
 /* ---------- Responsive ---------- */
 @media (max-width: 1023px) {
@@ -274,6 +317,10 @@ a.use-inner:hover .use-name { color: var(--accent); }
   .wide-main { padding-top: 40px; }
   .wide-head h1 { font-size: 32px; }
   .use-grid { grid-template-columns: 1fr; }
+  .desk { margin-bottom: 48px; }
+  .desk-spot { width: 24px; height: 24px; margin: -12px 0 0 -12px; }
+  .desk-spot::before, .desk-spot::after { inset: 7px; }
+  .desk-tip { max-width: 180px; padding: 6px 10px; font-size: 12px; }
   .gallery { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .layout { padding: 0 16px; }
   .section-title { margin: 0 -16px 12px; padding: 14px 16px; }
@@ -284,4 +331,5 @@ a.use-inner:hover .use-name { color: var(--accent); }
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
   * { transition: none !important; }
+  .desk-spot::after { animation: none; opacity: 0; }
 }

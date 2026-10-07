@@ -1,18 +1,47 @@
 # Devices on the /uses/ page. Each item is one card.
-# Fields: name, kind (Laptop, Keyboard, Trackpad, Monitor, 3D printer; sets the icon),
-# note (optional), image (optional, replaces the icon), link (optional),
-# credit (only for a photo you did not take: author, license, license_url, source;
-# similar: true when the photo shows a similar model, not the exact one).
+# Fields: name, kind (Laptop, Keyboard, Trackpad, Monitor, Monitor arm, Stand, Tablet,
+# Phone, Charger, Earbuds, Lamp, 3D printer; sets the icon),
+# note (optional), link (optional: a full URL opens in a new tab, a site path like /3d/x/ does not),
+# spot (optional: x and y of the device on the desk photo, in percent from the top left).
 - section: Desk
   items:
     - name: MacBook Air M2
       kind: Laptop
-    - name: Magic Keyboard with Touch ID
-      kind: Keyboard
-    - name: Magic Trackpad
-      kind: Trackpad
+      spot: { x: 17, y: 64 }
+    - name: MacBook stand
+      kind: Stand
+      note: 3D printed
+      link: /3d/macbook-stand/
+      spot: { x: 45, y: 77 }
     - name: Dell S2721HS
       kind: Monitor
+      spot: { x: 44, y: 24 }
+    - name: North Bayou F80
+      kind: Monitor arm
+      spot: { x: 35, y: 57 }
+    - name: Magic Keyboard with Touch ID
+      kind: Keyboard
+      spot: { x: 78, y: 84 }
+    - name: Magic Trackpad
+      kind: Trackpad
+      spot: { x: 86, y: 75 }
+    - name: iPad Air 11" (M2)
+      kind: Tablet
+      spot: { x: 56, y: 64 }
+    - name: iPhone 13
+      kind: Phone
+      spot: { x: 65, y: 57 }
+    - name: MagSafe charger stand
+      kind: Charger
+      note: 3D printed
+      link: /3d/magsafe-charger-stand/
+      spot: { x: 66, y: 71 }
+    - name: AirPods Pro 2
+      kind: Earbuds
+      spot: { x: 73, y: 73 }
+    - name: IKEA KVART
+      kind: Lamp
+      spot: { x: 64, y: 31 }
 - section: 3D Printing
   items:
     - name: Creality Ender 3 S1

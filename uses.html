@@ -10,20 +10,31 @@ summary: The hardware and tools I use every day.
   <p class="detail-summary">{{ page.summary }}</p>
 </header>
 
+<figure class="desk">
+  <img src="{{ '/img/uses/desk-2400.jpg' | relative_url }}" srcset="{{ '/img/uses/desk-1200.jpg' | relative_url }} 1200w, {{ '/img/uses/desk-2400.jpg' | relative_url }} 2400w" sizes="(max-width: 1200px) 100vw, 1200px" width="2400" height="1350" alt="My desk: a laptop on a stand, a monitor on an arm, a tablet, a phone on a charger, earbuds, a keyboard and a trackpad.">
+  {% for group in site.data.uses %}{% for item in group.items %}{% if item.spot %}
+  {% assign card_id = item.name | slugify | prepend: 'use-' %}
+  <button type="button" class="desk-spot" style="--x: {{ item.spot.x }}%; --y: {{ item.spot.y }}%;" data-card="{{ card_id }}"{% if item.spot.y < 30 %} data-below{% endif %}{% if item.spot.x < 20 %} data-align="start"{% elsif item.spot.x > 80 %} data-align="end"{% endif %}>
+    <span class="desk-tip"><strong>{{ item.name | escape }}</strong>{% unless item.kind == item.name %} <span>{{ item.kind | escape }}</span>{% endunless %}{% if item.note %} <em>{{ item.note | escape }}</em>{% endif %}</span>
+  </button>
+  {% endif %}{% endfor %}{% endfor %}
+</figure>
+
 {% for group in site.data.uses %}
 {% assign section_id = group.section | slugify | prepend: 'uses-' %}
 <section class="use-section" aria-labelledby="{{ section_id }}">
   <h2 class="use-section-title" id="{{ section_id }}">{{ group.section | escape }}</h2>
-  <ul class="use-grid">
+  <ul class="use-grid compact">
     {% for item in group.items %}
-    <li class="use-card">
-      {% if item.link %}<a class="use-inner" href="{{ item.link }}" target="_blank" rel="noopener">{% else %}<div class="use-inner">{% endif %}
-        <div class="use-media">{% if item.image %}<img src="{{ item.image | relative_url }}" alt="{{ item.name | escape }}" loading="lazy">{% else %}{% include uses-icon.html kind=item.kind %}{% endif %}</div>
-        <h3 class="use-name">{{ item.name | escape }}</h3>
-        <p class="use-kind">{{ item.kind | escape }}</p>
-        {% if item.note %}<p class="use-note">{{ item.note | escape }}</p>{% endif %}
+    <li class="use-card" id="{{ item.name | slugify | prepend: 'use-' }}">
+      {% if item.link %}<a class="use-inner" href="{{ item.link | relative_url }}"{% if item.link contains '://' %} target="_blank" rel="noopener"{% endif %}>{% else %}<div class="use-inner">{% endif %}
+        <div class="use-media">{% include uses-icon.html kind=item.kind %}</div>
+        <div class="use-text">
+          <h3 class="use-name">{{ item.name | escape }}</h3>
+          {% capture kind_line %}{% unless item.kind == item.name %}{{ item.kind | escape }}{% endunless %}{% if item.note %}{% unless item.kind == item.name %} · {% endunless %}{{ item.note | escape }}{% endif %}{% endcapture %}
+          {% if kind_line != '' %}<p class="use-kind">{{ kind_line }}</p>{% endif %}
+        </div>
       {% if item.link %}</a>{% else %}</div>{% endif %}
-      {% if item.credit %}<p class="use-credit">{% if item.credit.similar %}Similar model. {% endif %}Photo: <a href="{{ item.credit.source }}" target="_blank" rel="noopener">{{ item.credit.author | escape }}</a>, <a href="{{ item.credit.license_url }}" target="_blank" rel="noopener">{{ item.credit.license | escape }}</a></p>{% endif %}
     </li>
     {% endfor %}
   </ul>
